@@ -387,7 +387,7 @@
             <relations>
                 <relation id="impacts">
                     <neighbours>
-                        <neighbour id="iotgateway">
+                        <neighbour id="IOTGateway">
                             <query_up>SELECT IOTGateway AS gw JOIN lnkIOTGatewayToIOTSensor AS l1 ON l1.iotgateway_id = gw.id WHERE l1.iotsensor_id = :this-&gt;id</query_up>
                         </neighbour>
                     </neighbours>
