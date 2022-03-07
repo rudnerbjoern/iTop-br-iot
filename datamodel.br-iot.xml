@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.7">    <!--
+    * @copyright   Copyright (C) 2022 Björn Rudner
+    * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
+    -->
+    <classes>
+        <class id="IOTGateway" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotgateway</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field/>
+                <naming>
+                    <attributes>
+                        <attribute id="name"/>
+                    </attributes>
+                </naming>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name"/>
+                        <attribute id="org_id"/>
+                        <attribute id="organization_name"/>
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <!-- later
+                <field id="phonenumber" xsi:type="AttributeString">
+                    <sql>phonenumber</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="imei" xsi:type="AttributeString">
+                    <sql>imei</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="hw_pin" xsi:type="AttributeString">
+                    <sql>hw_pin</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+            -->
+                <field id="iotsensors_list" xsi:type="AttributeLinkedSetIndirect">
+                    <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
+                    <ext_key_to_me>iotgateway_id</ext_key_to_me>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <ext_key_to_remote>iotsensor_id</ext_key_to_remote>
+                    <duplicates>false</duplicates>
+                </field>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="business_criticity">
+                            <rank>40</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>70</rank>
+                        </item>
+                        <!-- later
+                        <item id="phonenumber">
+                            <rank>80</rank>
+                        </item>
+                    -->
+                        <item id="serialnumber">
+                            <rank>90</rank>
+                        </item>
+                        <item id="asset_number">
+                            <rank>100</rank>
+                        </item>
+                        <item id="move2production">
+                            <rank>110</rank>
+                        </item>
+                        <item id="purchase_date">
+                            <rank>120</rank>
+                        </item>
+                        <item id="end_of_warranty">
+                            <rank>130</rank>
+                        </item>
+                        <item id="description">
+                            <rank>140</rank>
+                        </item>
+                        <item id="contacts_list">
+                            <rank>150</rank>
+                        </item>
+                        <item id="documents_list">
+                            <rank>160</rank>
+                        </item>
+                        <item id="iotsensors_list">
+                            <rank>170</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="business_criticity">
+                            <rank>40</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>70</rank>
+                        </item>
+                        <!-- later
+                        <item id="phonenumber">
+                            <rank>80</rank>
+                        </item>
+                        <item id="imei">
+                            <rank>82</rank>
+                        </item>
+                        <item id="hw_pin">
+                            <rank>84</rank>
+                        </item>
+                    -->
+                        <item id="serialnumber">
+                            <rank>90</rank>
+                        </item>
+                        <item id="asset_number">
+                            <rank>100</rank>
+                        </item>
+                        <item id="move2production">
+                            <rank>110</rank>
+                        </item>
+                        <item id="purchase_date">
+                            <rank>120</rank>
+                        </item>
+                        <item id="end_of_warranty">
+                            <rank>130</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="status">
+                            <rank>20</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>40</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>50</rank>
+                        </item>
+                        <!-- later
+                        <item id="phonenumber">
+                            <rank>60</rank>
+                        </item>
+                    -->
+                    </items>
+                </list>
+            </presentation>
+        </class>
+
+        <class id="IOTSensor" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotsensor</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field />
+                <naming>
+                    <attributes>
+                        <attribute id="name" />
+                    </attributes>
+                </naming>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name" />
+                        <attribute id="org_id" />
+                        <attribute id="organization_name" />
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <field id="iotgateway_list" xsi:type="AttributeLinkedSetIndirect">
+                    <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
+                    <ext_key_to_me>iotsensor_id</ext_key_to_me>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <ext_key_to_remote>iotgateway_id</ext_key_to_remote>
+                    <duplicates>false</duplicates>
+                </field>
+            </fields>
+            <presentation>
+                <details>
+                    <items>
+
+                        <item id="contacts_list">
+                            <rank>10</rank>
+                        </item>
+                        <item id="documents_list">
+                            <rank>20</rank>
+                        </item>
+                        <item id="applicationsolution_list">
+                            <rank>35</rank>
+                        </item>
+                        <item id="iotgateway_list">
+                            <rank>50</rank>
+                        </item>
+
+
+
+                        <item id="col:col1">
+                            <rank>80</rank>
+                            <items>
+                                <item id="fieldset:Server:baseinfo">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="name">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="org_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="status">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="business_criticity">
+                                            <rank>40</rank>
+                                        </item>
+                                        <item id="location_id">
+                                            <rank>50</rank>
+                                        </item>
+
+                                    </items>
+                                </item>
+                                <item id="fieldset:Server:moreinfo">
+                                    <rank>20</rank>
+                                    <items>
+
+                                        <item id="brand_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="model_id">
+                                            <rank>30</rank>
+                                        </item>
+
+
+
+                                        <item id="serialnumber">
+                                            <rank>70</rank>
+                                        </item>
+                                        <item id="asset_number">
+                                            <rank>80</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                        <item id="col:col2">
+                            <rank>90</rank>
+                            <items>
+                                <item id="fieldset:Server:Date">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="move2production">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="purchase_date">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="end_of_warranty">
+                                            <rank>30</rank>
+                                        </item>
+                                    </items>
+                                </item>
+
+                                <item id="fieldset:Server:otherinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="description">
+                                            <rank>10</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="business_criticity">
+                            <rank>40</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>70</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                        <item id="asset_number">
+                            <rank>90</rank>
+                        </item>
+                        <item id="move2production">
+                            <rank>120</rank>
+                        </item>
+                        <item id="purchase_date">
+                            <rank>130</rank>
+                        </item>
+                        <item id="end_of_warranty">
+                            <rank>140</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="status">
+                            <rank>20</rank>
+                        </item>
+                        <item id="business_criticity">
+                            <rank>30</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>40</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>70</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+            <relations>
+                <relation id="impacts">
+                    <neighbours>
+                        <neighbour id="iotgateway">
+                            <query_up>SELECT IOTGateway AS gw JOIN lnkIOTGatewayToIOTSensor AS l1 ON l1.iotgateway_id = gw.id WHERE l1.iotsensor_id = :this-&gt;id</query_up>
+                        </neighbour>
+                    </neighbours>
+                </relation>
+            </relations>
+            <methods />
+        </class>
+
+        <class id="lnkIOTGatewayToIOTSensor" _delta="define">
+            <parent>cmdbAbstractObject</parent>
+            <properties>
+                <is_link>1</is_link>
+                <category>bizmodel</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>lnkiotgatewaytoiotsensor</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field/>
+                <naming>
+                    <attributes>
+                        <attribute id="iotgateway_id"/>
+                        <attribute id="iotsensor_id"/>
+                    </attributes>
+                </naming>
+                <icon/>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="iotgateway_id"/>
+                        <attribute id="iotsensor_id"/>
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
+                    <sql>iotgateway_id</sql>
+                    <target_class>IOTGateway</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_AUTO</on_target_delete>
+                </field>
+                <field id="iotgateway_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>iotgateway_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="iotsensor_id" xsi:type="AttributeExternalKey">
+                    <sql>iotsensor_id</sql>
+                    <target_class>IOTSensor</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_AUTO</on_target_delete>
+                </field>
+                <field id="iotsensor_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>iotsensor_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="collection_port" xsi:type="AttributeString">
+                    <sql>collection_port</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="cable_number" xsi:type="AttributeString">
+                    <sql>cable_number</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+            </fields>
+            <methods>
+            </methods>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="iotgateway_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="iotsensor_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="collection_port">
+                            <rank>30</rank>
+                        </item>
+                        <item id="cable_number">
+                            <rank>40</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="iotgateway_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="iotsensor_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="collection_port">
+                            <rank>30</rank>
+                        </item>
+                        <item id="cable_number">
+                            <rank>40</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="iotgateway_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="iotsensor_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="collection_port">
+                            <rank>30</rank>
+                        </item>
+                        <item id="cable_number">
+                            <rank>40</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+    </classes>
+
+    <menus>
+        <menu id="ConfigManagementOverview" xsi:type="DashboardMenuNode" _delta="must_exist">
+            <definition>
+                <cells>
+                    <cell id="6.2" _delta="define">
+                        <rank>1</rank>
+                        <dashlets>
+                            <dashlet id="41" xsi:type="DashletHeaderStatic">
+                                <rank>0</rank>
+                                <title>Menu:ConfigManagement:IoT</title>
+                                <icon>iTop-br-iot/images/iot.png</icon>
+                            </dashlet>
+                            <dashlet id="42" xsi:type="DashletBadge">
+                                <rank>1</rank>
+                                <class>IOTGateway</class>
+                            </dashlet>
+                            <dashlet id="43" xsi:type="DashletBadge">
+                                <rank>2</rank>
+                                <class>IOTSensor</class>
+                            </dashlet>
+                        </dashlets>
+                    </cell>
+                </cells>
+            </definition>
+        </menu>
+    </menus>
+</itop_design>
