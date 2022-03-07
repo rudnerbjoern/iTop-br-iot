@@ -385,6 +385,7 @@
                 </list>
             </presentation>
             <relations>
+                <!-- later
                 <relation id="impacts">
                     <neighbours>
                         <neighbour id="IOTGateway">
@@ -392,6 +393,7 @@
                         </neighbour>
                     </neighbours>
                 </relation>
+            -->
             </relations>
             <methods />
         </class>
