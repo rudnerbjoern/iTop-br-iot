@@ -203,7 +203,7 @@
                 </field>
                 <field id="iotgateway_list" xsi:type="AttributeLinkedSet">
                     <linked_class>IOTGateway</linked_class>
-                    <ext_key_to_me>iotapplication_id</ext_key_to_me>
+                    <ext_key_to_me>application_id</ext_key_to_me>
                     <edit_mode>add_only</edit_mode>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
