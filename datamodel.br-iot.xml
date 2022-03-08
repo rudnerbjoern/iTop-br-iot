@@ -69,75 +69,127 @@
                     <count_max>0</count_max>
                     <ext_key_to_remote>iotsensor_id</ext_key_to_remote>
                     <duplicates>false</duplicates>
+                    <edit_mode>in_place</edit_mode>
                 </field>
             </fields>
             <methods/>
             <presentation>
                 <details>
                     <items>
-                        <item id="name">
+                        <item id="contacts_list">
                             <rank>10</rank>
                         </item>
-                        <item id="org_id">
+                        <item id="documents_list">
                             <rank>20</rank>
                         </item>
-                        <item id="status">
+                        <item id="applicationsolution_list">
                             <rank>30</rank>
                         </item>
-                        <item id="business_criticity">
+                        <item id="iotsensors_list">
                             <rank>40</rank>
                         </item>
-                        <item id="location_id">
-                            <rank>50</rank>
-                        </item>
-                        <item id="brand_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="model_id">
-                            <rank>70</rank>
-                        </item>
-                        <item id="cert_created">
+                        <item id="col:col1">
                             <rank>80</rank>
+                            <items>
+                                <item id="fieldset:Server:baseinfo">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="name">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="org_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="status">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="business_criticity">
+                                            <rank>40</rank>
+                                        </item>
+                                        <item id="location_id">
+                                            <rank>50</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:IOTGateway:SIM">
+                                    <rank>20</rank>
+                                    <items>
+                                        <item id="phonenumber">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="pin">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="puk">
+                                            <rank>30</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:Server:moreinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="brand_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="model_id">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="serialnumber">
+                                            <rank>70</rank>
+                                        </item>
+                                        <item id="asset_number">
+                                            <rank>80</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
                         </item>
-                        <item id="cert_expire_date">
+                        <item id="col:col2">
                             <rank>90</rank>
+                            <items>
+                                <item id="fieldset:Server:Date">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="move2production">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="purchase_date">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="end_of_warranty">
+                                            <rank>30</rank>
+                                        </item>
+                                    </items>
+                                </item>
+
+                                <item id="fieldset:IOTGateway:Certificate">
+                                    <rank>20</rank>
+                                    <items>
+                                        <item id="cert_created">
+                                            <rank>80</rank>
+                                        </item>
+                                        <item id="cert_expire_date">
+                                            <rank>90</rank>
+                                        </item>
+                                    </items>
+                                </item>
+
+
+
+                                <item id="fieldset:Server:otherinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="description">
+                                            <rank>10</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
                         </item>
-                        <item id="phonenumber">
-                            <rank>100</rank>
-                        </item>
-                        <item id="pin">
-                            <rank>110</rank>
-                        </item>
-                        <item id="puk">
-                            <rank>120</rank>
-                        </item>
-                        <item id="serialnumber">
-                            <rank>130</rank>
-                        </item>
-                        <item id="asset_number">
-                            <rank>140</rank>
-                        </item>
-                        <item id="move2production">
-                            <rank>150</rank>
-                        </item>
-                        <item id="purchase_date">
-                            <rank>160</rank>
-                        </item>
-                        <item id="end_of_warranty">
-                            <rank>170</rank>
-                        </item>
-                        <item id="description">
-                            <rank>180</rank>
-                        </item>
-                        <item id="contacts_list">
-                            <rank>190</rank>
-                        </item>
-                        <item id="documents_list">
-                            <rank>200</rank>
-                        </item>
-                        <item id="iotsensors_list">
-                            <rank>210</rank>
-                        </item>
+
+
+
+
                     </items>
                 </details>
                 <search>
@@ -261,10 +313,10 @@
                             <rank>20</rank>
                         </item>
                         <item id="applicationsolution_list">
-                            <rank>35</rank>
+                            <rank>30</rank>
                         </item>
                         <item id="iotgateway_list">
-                            <rank>50</rank>
+                            <rank>40</rank>
                         </item>
 
 
