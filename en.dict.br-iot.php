@@ -16,7 +16,7 @@ Dict::Add('EN US', 'English', 'English', array(
     'Menu:ConfigManagement:IoT' => 'IoT Devices',
     'Menu:ConfigManagement:IoT+' => 'Internet of Things',
     'Menu:ConfigManagement:IoTTypology' => 'IoT Typology Configuration',
-    'Menu:IOTSpace' => 'IoT Management',
+    'Menu:IOTManagement' => 'IoT Management',
     'Menu:IOTSpace:Devices' => 'IoT Devices',
     'Menu:IOTSpace:Options' => 'IoT Configuration',
     'IOTGateway:Certificate' => 'Certificate',

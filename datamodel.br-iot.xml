@@ -616,7 +616,6 @@
                 </list>
             </presentation>
         </class>
-
         <class id="IOTSensor" _delta="define">
             <parent>PhysicalDevice</parent>
             <properties>
@@ -658,13 +657,15 @@
                         <item id="contacts_list">
                             <rank>10</rank>
                         </item>
+                        -->
                         <item id="documents_list">
                             <rank>20</rank>
                         </item>
+                        <!-- disable presentation
                         <item id="applicationsolution_list">
                             <rank>30</rank>
                         </item>
-                    -->
+                        -->
                         <item id="iotgateway_list">
                             <rank>40</rank>
                         </item>
@@ -693,7 +694,6 @@
                                         </item>
                                     </items>
                                 </item>
-                                <!-- disable presentation
                                 <item id="fieldset:Server:moreinfo">
                                     <rank>20</rank>
                                     <items>
@@ -706,12 +706,13 @@
                                         <item id="serialnumber">
                                             <rank>70</rank>
                                         </item>
+                                        <!-- disable presentation
                                         <item id="asset_number">
                                             <rank>80</rank>
                                         </item>
+                                    -->
                                     </items>
                                 </item>
-                            -->
                             </items>
                         </item>
                         <item id="col:col2">
@@ -764,7 +765,6 @@
                         <item id="location_id">
                             <rank>50</rank>
                         </item>
-                        <!-- disable presentation
                         <item id="brand_id">
                             <rank>60</rank>
                         </item>
@@ -774,6 +774,7 @@
                         <item id="serialnumber">
                             <rank>80</rank>
                         </item>
+                        <!-- disable presentation
                         <item id="asset_number">
                             <rank>90</rank>
                         </item>
@@ -807,7 +808,6 @@
                         <item id="location_id">
                             <rank>40</rank>
                         </item>
-                        <!-- disable presentation
                         <item id="brand_id">
                             <rank>50</rank>
                         </item>
@@ -817,7 +817,6 @@
                         <item id="serialnumber">
                             <rank>70</rank>
                         </item>
-                        -->
                     </items>
                 </list>
             </presentation>
@@ -953,8 +952,8 @@
     </classes>
     <menus>
         <menu id="IOTManagement" xsi:type="MenuGroup" _delta="define">
-            <rank>22</rank>
-            <title>Menu:IOTSpace</title>
+            <rank>32</rank>
+            <title>Menu:IOTManagement</title>
             <enable_class _delta="define">IOTGateway</enable_class>
             <enable_admin_only _delta="define">0</enable_admin_only>
             <enable_action _delta="define">UR_ACTION_MODIFY</enable_action>
