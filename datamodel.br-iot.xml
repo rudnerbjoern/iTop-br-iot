@@ -952,8 +952,7 @@
     </classes>
     <menus>
         <menu id="IOTManagement" xsi:type="MenuGroup" _delta="define">
-            <rank>32</rank>
-            <title>Menu:IOTManagement</title>
+            <rank>29</rank>
             <enable_class _delta="define">IOTGateway</enable_class>
             <enable_admin_only _delta="define">0</enable_admin_only>
             <enable_action _delta="define">UR_ACTION_MODIFY</enable_action>

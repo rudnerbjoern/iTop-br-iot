@@ -13,12 +13,6 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:Model/Attribute:type/Value:IOTGateway+' => '',
     'Class:Model/Attribute:type/Value:IOTSensor' => 'IoT Sensor',
     'Class:Model/Attribute:type/Value:IOTSensor+' => '',
-    'Menu:ConfigManagement:IoT' => 'IoT Geräte',
-    'Menu:ConfigManagement:IoT+' => 'Internet of Things',
-    'Menu:ConfigManagement:IoTTypology' => 'IoT Typologie Konfiguration',
-    'Menu:IOTManagement' => 'IoT Verwaltung',
-    'Menu:IOTSpace:Devices' => 'IoT Geräte',
-    'Menu:IOTSpace:Options' => 'IoT Konfiguration',
     'IOTGateway:Certificate' => 'Zertifikat',
     'IOTGateway:SIM' => 'SIM Karte',
 ));
@@ -129,4 +123,17 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:lnkIOTGatewayToIOTSensor/Attribute:collection_port+' => '',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number' => 'Kabelnummer',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number+' => '',
+));
+
+//
+// Application Menu
+//
+Dict::Add('DE DE', 'German', 'Deutsch', array(
+    'Menu:IOTManagement' => 'IoT Verwaltung',
+    'Menu:IOTSpace' => 'IoT Bereich',
+    'Menu:IOTSpace:Devices' => 'IoT Geräte',
+    'Menu:IOTSpace:Options' => 'IoT Konfiguration',
+    'Menu:IOTShortCut' => 'Shotcuts',
+    'Menu:IOTGateway' => 'IoT Gateways',
+    'Menu:IOTSensor' => 'IoT Sensoren',
 ));
