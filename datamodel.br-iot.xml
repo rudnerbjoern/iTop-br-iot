@@ -1066,7 +1066,7 @@
             </group>
         </groups>
         <profiles>
-            <profile id="IOTManager" _delta="define">
+            <profile id="122443" _delta="define">
                 <name>IoT Manager</name>
                 <description>Person dealing with IoT devices</description>
                 <groups>

@@ -131,7 +131,6 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Application Menu
 //
-
 Dict::Add('EN US', 'English', 'English', array(
     'Menu:IOTManagement' => 'IoT Management',
     'Menu:IOTSpace' => 'IoT Space',
@@ -139,5 +138,6 @@ Dict::Add('EN US', 'English', 'English', array(
     'Menu:IOTSpace:Options' => 'IoT Configuration',
     'Menu:IOTShortCut' => 'Shotcuts',
     'Menu:IOTGateway' => 'IoT Gateways',
+    'Menu:IOTGateway+' => 'IoT Gateways',
     'Menu:IOTSensor' => 'IoT Sensors',
 ));

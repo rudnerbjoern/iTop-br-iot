@@ -135,5 +135,6 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Menu:IOTSpace:Options' => 'IoT Konfiguration',
     'Menu:IOTShortCut' => 'Shotcuts',
     'Menu:IOTGateway' => 'IoT Gateways',
+    'Menu:IOTGateway+' => 'IoT Gateways',
     'Menu:IOTSensor' => 'IoT Sensoren',
 ));
