@@ -44,3 +44,8 @@ iTop extension to add IoT CIs
 ### Customer
 
 TBD
+
+
+## Images
+
+https://handbook.enapter.com/icons.html
