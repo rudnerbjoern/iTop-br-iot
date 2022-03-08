@@ -29,6 +29,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway' => 'IoT Gateway',
     'Class:IOTGateway+' => '',
+    'Class:IOTGateway/Attribute:device_id' => 'Device ID',
+    'Class:IOTGateway/Attribute:device_id+' => 'Muss eine gültige GUID sein',
     'Class:IOTGateway/Attribute:cert_created' => 'Zertifikat erstellt',
     'Class:IOTGateway/Attribute:cert_created+' => '',
     'Class:IOTGateway/Attribute:cert_created/Value:no' => 'Nein',
