@@ -974,7 +974,7 @@
                             <dashlet id="iot-101" xsi:type="DashletHeaderStatic">
                                 <rank>1</rank>
                                 <title>Menu:IOTSpace:Devices</title>
-                                <icon>TODO.png</icon>
+                                <icon>iTop-br-iot/images/iot-gateway.png</icon>
                             </dashlet>
                             <dashlet id="iot-111" xsi:type="DashletBadge">
                                 <rank>2</rank>
@@ -992,7 +992,7 @@
                             <dashlet id="iot-301" xsi:type="DashletHeaderStatic">
                                 <rank>1</rank>
                                 <title>Menu:IOTSpace:Options</title>
-                                <icon>TODO.png</icon>
+                                <icon>iTop-br-iot/images/iot-sensor.png</icon>
                             </dashlet>
                             <dashlet id="iot-311" xsi:type="DashletBadge">
                                 <rank>2</rank>
