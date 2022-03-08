@@ -27,23 +27,41 @@
                 </reconciliation>
             </properties>
             <fields>
-                <!-- later
-                <field id="phonenumber" xsi:type="AttributeString">
+                <field id="cert_created" xsi:type="AttributeEnum">
+                    <values>
+                        <value id="yes">
+                            <code>yes</code>
+                        </value>
+                        <value id="no">
+                            <code>no</code>
+                        </value>
+                    </values>
+                    <sql>cert_created</sql>
+                    <default_value>no</default_value>
+                    <is_null_allowed>true</is_null_allowed>
+                    <display_style>radio_horizontal</display_style>
+                </field>
+                <field id="cert_expire_date" xsi:type="AttributeDate">
+                    <sql>cert_expire_date</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="phonenumber" xsi:type="AttributePhoneNumber">
                     <sql>phonenumber</sql>
                     <default_value/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="imei" xsi:type="AttributeString">
-                    <sql>imei</sql>
+                <field id="pin" xsi:type="AttributeString">
+                    <sql>pin</sql>
                     <default_value/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="hw_pin" xsi:type="AttributeString">
-                    <sql>hw_pin</sql>
+                <field id="puk" xsi:type="AttributeString">
+                    <sql>puk</sql>
                     <default_value/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-            -->
+
                 <field id="iotsensors_list" xsi:type="AttributeLinkedSetIndirect">
                     <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
                     <ext_key_to_me>iotgateway_id</ext_key_to_me>
@@ -78,37 +96,47 @@
                         <item id="model_id">
                             <rank>70</rank>
                         </item>
-                        <!-- later
-                        <item id="phonenumber">
+                        <item id="cert_created">
                             <rank>80</rank>
                         </item>
-                    -->
-                        <item id="serialnumber">
+                        <item id="cert_expire_date">
                             <rank>90</rank>
                         </item>
-                        <item id="asset_number">
+                        <item id="phonenumber">
                             <rank>100</rank>
                         </item>
-                        <item id="move2production">
+                        <item id="pin">
                             <rank>110</rank>
                         </item>
-                        <item id="purchase_date">
+                        <item id="puk">
                             <rank>120</rank>
                         </item>
-                        <item id="end_of_warranty">
+                        <item id="serialnumber">
                             <rank>130</rank>
                         </item>
-                        <item id="description">
+                        <item id="asset_number">
                             <rank>140</rank>
                         </item>
-                        <item id="contacts_list">
+                        <item id="move2production">
                             <rank>150</rank>
                         </item>
-                        <item id="documents_list">
+                        <item id="purchase_date">
                             <rank>160</rank>
                         </item>
-                        <item id="iotsensors_list">
+                        <item id="end_of_warranty">
                             <rank>170</rank>
+                        </item>
+                        <item id="description">
+                            <rank>180</rank>
+                        </item>
+                        <item id="contacts_list">
+                            <rank>190</rank>
+                        </item>
+                        <item id="documents_list">
+                            <rank>200</rank>
+                        </item>
+                        <item id="iotsensors_list">
+                            <rank>210</rank>
                         </item>
                     </items>
                 </details>
