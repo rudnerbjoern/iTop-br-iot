@@ -168,6 +168,8 @@ Dict::Add('EN US', 'English', 'English', array(
     'Menu:IOTGateway+' => 'IoT Gateways',
     'Menu:IOTSensor' => 'IoT Sensors',
     'Menu:IOTSensor+' => 'IoT Sensors',
-    'Menu:IOTSimCard' => 'SIM Cards',
-    'Menu:IOTSimCard+' => 'SIM Cards',
+    'Menu:IOTSimCard' => 'IoT SIM Cards',
+    'Menu:IOTSimCard+' => 'IoT SIM Cards',
+    'Menu:IOTCable' => 'IoT Cables',
+    'Menu:IOTcable+' => 'IoT Cables',
 ));

@@ -282,7 +282,7 @@
                 <field id="device_id" xsi:type="AttributeString">
                     <sql>device_id</sql>
                     <default_value/>
-                    <is_null_allowed>false</is_null_allowed>
+                    <is_null_allowed>true</is_null_allowed>
                     <validation_pattern>^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$</validation_pattern>
                 </field>
                 <field id="cert_created" xsi:type="AttributeEnum">
@@ -811,11 +811,6 @@
                 </list>
             </presentation>
         </class>
-
-
-
-
-
         <class id="IOTSimCard" _delta="define">
             <parent>PhysicalDevice</parent>
             <properties>
@@ -1053,9 +1048,6 @@ Notice Giving By as Date
                 </default_search>
                 <list>
                     <items>
-                        <item id="name">
-                            <rank>1</rank>
-                        </item>
                         <item id="org_id">
                             <rank>2</rank>
                         </item>
@@ -1319,6 +1311,13 @@ Notice Giving By as Date
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
+        <menu id="IOTCable" xsi:type="OQLMenuNode" _delta="define">
+            <rank>20</rank>
+            <parent>IOTShortCut</parent>
+            <oql>SELECT lnkIOTGatewayToIOTSensor</oql>
+            <do_search>1</do_search>
+            <auto_reload>fast</auto_reload>
+        </menu>
         <menu id="Typology" xsi:type="DashboardMenuNode" _delta="if_exists">
             <definition>
                 <cells>
@@ -1348,6 +1347,7 @@ Notice Giving By as Date
                 <classes>
                     <class id="IOTGateway"/>
                     <class id="IOTSensor"/>
+                    <class id="IOTSimCard"/>
                     <class id="lnkIOTGatewayToIOTSensor"/>
                     <class id="IOTProgramVersion"/>
                     <class id="IOTFirmwareVersion"/>
