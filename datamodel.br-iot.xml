@@ -304,20 +304,11 @@
                     <default_value/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="sim_number" xsi:type="AttributeString">
-                    <sql>sim_number</sql>
-                    <default_value/>
+                <field id="simcard" xsi:type="AttributeExternalKey">
+                    <sql>simcard</sql>
+                    <target_class>SimCard</target_class>
                     <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="pin" xsi:type="AttributeString">
-                    <sql>pin</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="puk" xsi:type="AttributeString">
-                    <sql>puk</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
                 </field>
                 <field id="programversion_id" xsi:type="AttributeExternalKey">
                     <sql>programversion_id</sql>
@@ -447,20 +438,6 @@
                                         </item>
                                     </items>
                                 </item>
-                                <item id="fieldset:IOTGateway:SIM">
-                                    <rank>20</rank>
-                                    <items>
-                                        <item id="sim_number">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="pin">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="puk">
-                                            <rank>30</rank>
-                                        </item>
-                                    </items>
-                                </item>
                                 <item id="fieldset:Server:moreinfo">
                                     <rank>30</rank>
                                     <items>
@@ -474,6 +451,9 @@
                                     -->
                                         <item id="device_id">
                                             <rank>30</rank>
+                                        </item>
+                                        <item id="simcard">
+                                            <rank>35</rank>
                                         </item>
                                         <item id="application_id">
                                             <rank>40</rank>
