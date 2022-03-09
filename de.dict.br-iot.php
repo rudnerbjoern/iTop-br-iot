@@ -13,8 +13,6 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:Model/Attribute:type/Value:IOTGateway+' => '',
     'Class:Model/Attribute:type/Value:IOTSensor' => 'IoT Sensor',
     'Class:Model/Attribute:type/Value:IOTSensor+' => '',
-    'IOTGateway:Certificate' => 'Zertifikat',
-    'IOTGateway:SIM' => 'SIM Karte',
 ));
 
 //
@@ -55,6 +53,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway/Attribute:vpnd/Value:yes+' => '',
     'Class:IOTGateway/Attribute:iotsensors_list' => 'Sensoren',
     'Class:IOTGateway/Attribute:iotsensors_list+' => '',
+    'IOTGateway:Certificate' => 'Zertifikat',
 ));
 
 //
@@ -121,6 +120,26 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:lnkIOTGatewayToIOTSensor/Attribute:collection_port+' => '',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number' => 'Kabelnummer',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number+' => '',
+));
+
+//
+// Class: IOTSimCard
+//
+Dict::Add('DE DE', 'German', 'Deutsch', array(
+    'Class:IOTSimCard' => 'SIM Karte',
+    'Class:IOTSimCard/Attribute:sim' => 'SIM Nummer',
+    'Class:IOTSimCard/Attribute:functionalcis_list' => 'CIs',
+    'Class:IOTSimCard/Attribute:phone_number' => 'Mobilnummer',
+    'Class:IOTSimCard/Attribute:pin' => 'PIN',
+    'Class:IOTSimCard/Attribute:puk' => 'PUK',
+    'Class:IOTSimCard/Attribute:contract_start_date' => 'Vertragsstart',
+    'Class:IOTSimCard/Attribute:contract_end_date' => 'Vertragsende',
+    'Class:IOTSimCard/Attribute:termination_till_date' => 'Kündigung bis',
+    'Class:IOTSimCard/Attribute:extended_till_date' => 'Verlängerung bis',
+    'Class:IOTSimCard/Attribute:notice_by_date' => 'Benachrichtigung bis',
+    'IOTSimCard:info' => 'Allgemeine Informationen',
+    'IOTSimCard:numbers' => 'Karteninformationen',
+    'IOTSimCard:date' => 'Vertragsdaten',
 ));
 
 //

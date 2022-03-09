@@ -13,8 +13,6 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:Model/Attribute:type/Value:IOTGateway+' => '',
     'Class:Model/Attribute:type/Value:IOTSensor' => 'IoT Sensor',
     'Class:Model/Attribute:type/Value:IOTSensor+' => '',
-    'IOTGateway:Certificate' => 'Certificate',
-    'IOTGateway:SIM' => 'SIM Card',
 ));
 
 //
@@ -57,6 +55,7 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTGateway/Attribute:vpnd/Value:yes+' => '',
     'Class:IOTGateway/Attribute:iotsensors_list' => 'Sensors',
     'Class:IOTGateway/Attribute:iotsensors_list+' => '',
+    'IOTGateway:Certificate' => 'Certificate',
 ));
 
 //
@@ -125,6 +124,36 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number+' => '',
 ));
 
+
+//
+// Class: IOTSimCard
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:IOTSimCard' => 'SIM Card',
+    'Class:IOTSimCard+' => 'SIM Card to link to a Mobile Phone or Tablet',
+    'Class:IOTSimCard/Attribute:sim' => 'SIM number',
+    'Class:IOTSimCard/Attribute:sim+' => 'Number of the SIM card',
+    'Class:IOTSimCard/Attribute:functionalcis_list' => 'CIs',
+    'Class:IOTSimCard/Attribute:phone_number' => 'Mobile phone number',
+    'Class:IOTSimCard/Attribute:phone_number+' => 'The mobile number linked to this SIM card',
+    'Class:IOTSimCard/Attribute:pin' => 'PIN',
+    'Class:IOTSimCard/Attribute:pin+' => 'PIN of the SIM card',
+    'Class:IOTSimCard/Attribute:puk' => 'PUK',
+    'Class:IOTSimCard/Attribute:puk+' => 'PUK of the SIM card',
+    'Class:IOTSimCard/Attribute:contract_start_date' => 'Contract starts',
+    'Class:IOTSimCard/Attribute:contract_start_date+' => '',
+    'Class:IOTSimCard/Attribute:contract_end_date' => 'Contract ends',
+    'Class:IOTSimCard/Attribute:contract_end_date+' => '',
+    'Class:IOTSimCard/Attribute:termination_till_date' => 'Termination till',
+    'Class:IOTSimCard/Attribute:termination_till_date+' => '',
+    'Class:IOTSimCard/Attribute:extended_till_date' => 'Extended till',
+    'Class:IOTSimCard/Attribute:extended_till_date+' => '',
+    'Class:IOTSimCard/Attribute:notice_by_date' => 'Notice giving by',
+    'Class:IOTSimCard/Attribute:notice_by_date+' => '',
+    'IOTSimCard:info' => 'General info',
+    'IOTSimCard:numbers' => 'Card info',
+    'IOTSimCard:date' => 'Contract dates',
+));
 
 //
 // Application Menu
