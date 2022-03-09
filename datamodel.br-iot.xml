@@ -456,7 +456,7 @@
                                         <item id="device_id">
                                             <rank>30</rank>
                                         </item>
-                                        <item id="simcard">
+                                        <item id="simcard_id">
                                             <rank>35</rank>
                                         </item>
                                         <item id="application_id">
