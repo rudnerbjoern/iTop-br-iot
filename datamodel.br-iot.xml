@@ -378,8 +378,8 @@
                     <display_style>radio_horizontal</display_style>
                 </field>
                 <field id="material_list" xsi:type="AttributeImage">
-                    <display_max_width>400</display_max_width>
-                    <display_max_height>400</display_max_height>
+                    <display_max_width>256</display_max_width>
+                    <display_max_height>256</display_max_height>
                     <storage_max_width>8000</storage_max_width>
                     <storage_max_height>8000</storage_max_height>
                     <default_image/>
