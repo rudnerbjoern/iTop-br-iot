@@ -962,17 +962,21 @@
                         <rank>1</rank>
                         <dashlets>
                             <dashlet id="iot-101" xsi:type="DashletHeaderStatic">
-                                <rank>1</rank>
+                                <rank>101</rank>
                                 <title>Menu:IOTSpace:Devices</title>
                                 <icon>iTop-br-iot/images/iot-gateway.png</icon>
                             </dashlet>
                             <dashlet id="iot-111" xsi:type="DashletBadge">
-                                <rank>2</rank>
+                                <rank>111</rank>
                                 <class>IOTGateway</class>
                             </dashlet>
                             <dashlet id="iot-112" xsi:type="DashletBadge">
-                                <rank>3</rank>
+                                <rank>112</rank>
                                 <class>IOTSensor</class>
+                            </dashlet>
+                            <dashlet id="iot-113" xsi:type="DashletBadge">
+                                <rank>113</rank>
+                                <class>SimCard</class>
                             </dashlet>
                         </dashlets>
                     </cell>
@@ -1017,6 +1021,13 @@
             <rank>20</rank>
             <parent>IOTShortCut</parent>
             <oql>SELECT IOTSensor</oql>
+            <do_search>1</do_search>
+            <auto_reload>fast</auto_reload>
+        </menu>
+        <menu id="IOTSimCard" xsi:type="OQLMenuNode" _delta="define">
+            <rank>20</rank>
+            <parent>IOTShortCut</parent>
+            <oql>SELECT SimCard</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
