@@ -377,6 +377,14 @@
                     <is_null_allowed>true</is_null_allowed>
                     <display_style>radio_horizontal</display_style>
                 </field>
+                <field id="material_list" xsi:type="AttributeImage">
+                    <display_max_width>400</display_max_width>
+                    <display_max_height>400</display_max_height>
+                    <storage_max_width>8000</storage_max_width>
+                    <storage_max_height>8000</storage_max_height>
+                    <default_image/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
                 <field id="iotsensors_list" xsi:type="AttributeLinkedSetIndirect">
                     <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
                     <ext_key_to_me>iotgateway_id</ext_key_to_me>
@@ -527,8 +535,11 @@
                                 <item id="fieldset:Server:otherinfo">
                                     <rank>30</rank>
                                     <items>
-                                        <item id="description">
+                                        <item id="material_list">
                                             <rank>10</rank>
+                                        </item>
+                                        <item id="description">
+                                            <rank>20</rank>
                                         </item>
                                     </items>
                                 </item>

@@ -33,6 +33,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway/Attribute:cert_created/Value:yes+' => '',
     'Class:IOTGateway/Attribute:cert_expire_date' => 'Zertifikat Ablaufdatum',
     'Class:IOTGateway/Attribute:cert_expire_date+' => '',
+    'Class:IOTGateway/Attribute:material_list' => 'Materialliste',
+    'Class:IOTGateway/Attribute:material_list+' => '',
     'Class:IOTGateway/Attribute:sim_number' => 'SIM Nummer',
     'Class:IOTGateway/Attribute:sim_number+' => '',
     'Class:IOTGateway/Attribute:pin' => 'PIN',
