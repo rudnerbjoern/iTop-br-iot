@@ -304,11 +304,15 @@
                     <default_value/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="simcard" xsi:type="AttributeExternalKey">
-                    <sql>simcard</sql>
+                <field id="simcard_id" xsi:type="AttributeExternalKey">
+                    <sql>simcard_id</sql>
                     <target_class>SimCard</target_class>
                     <is_null_allowed>true</is_null_allowed>
                     <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="simcard_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>simcard_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
                 </field>
                 <field id="programversion_id" xsi:type="AttributeExternalKey">
                     <sql>programversion_id</sql>
