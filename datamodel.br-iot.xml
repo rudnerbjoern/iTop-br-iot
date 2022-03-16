@@ -1269,7 +1269,7 @@ Notice Giving By as Date
                         <attribute id="iotsensor_name"/>
                     </attributes>
                 </naming>
-                <icon/>
+                <icon>images/patchcable.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="iotgateway_id"/>
@@ -1427,8 +1427,6 @@ Notice Giving By as Date
                                 <rank>114</rank>
                                 <class>lnkIOTGatewayToIOTSensor</class>
                                 <title>Menu:IOTCable</title>
-                                <label>cablelabel</label>
-                                <description>cabledescription</description>
                             </dashlet>
                         </dashlets>
                     </cell>
