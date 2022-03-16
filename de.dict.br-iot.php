@@ -16,6 +16,28 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 ));
 
 //
+// Class: IOTCustomer
+//
+Dict::Add('DE DE', 'German', 'Deutsch', array(
+    'Class:IOTCustomer' => 'IoT Kunde',
+    'Class:IOTCustomer+' => '',
+    'Class:IOTCustomer/Attribute:name' => 'Name',
+    'Class:IOTCustomer/Attribute:name+' => '',
+    'Class:IOTCustomer/Attribute:org_id' => 'Organisation',
+    'Class:IOTCustomer/Attribute:org_id+' => '',
+    'Class:IOTCustomer/Attribute:org_name' => 'Organisation Name',
+    'Class:IOTCustomer/Attribute:org_name+' => '',
+    'Class:IOTCustomer/Attribute:country' => 'Land',
+    'Class:IOTCustomer/Attribute:country+' => '',
+    'Class:IOTCustomer/Attribute:address' => 'Adresse',
+    'Class:IOTCustomer/Attribute:address+' => '',
+    'Class:IOTCustomer/Attribute:contact' => 'Kontaktperson',
+    'Class:IOTCustomer/Attribute:contact+' => '',
+    'Class:IOTCustomer/Attribute:iotgateway_list' => 'IoT Gateways',
+    'Class:IOTCustomer/Attribute:iotgateway_list+' => '',
+));
+
+//
 // Class: IOTGateway
 //
 Dict::Add('DE DE', 'German', 'Deutsch', array(
@@ -31,6 +53,10 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway/Attribute:cert_created/Value:yes+' => '',
     'Class:IOTGateway/Attribute:cert_expire_date' => 'Zertifikat Ablaufdatum',
     'Class:IOTGateway/Attribute:cert_expire_date+' => '',
+    'Class:IOTGateway/Attribute:customer_id' => 'Kunde',
+    'Class:IOTGateway/Attribute:customer_id+' => '',
+    'Class:IOTGateway/Attribute:customer_name' => 'Kunde Name',
+    'Class:IOTGateway/Attribute:customer_name+' => '',
     'Class:IOTGateway/Attribute:material_list' => 'Materialliste',
     'Class:IOTGateway/Attribute:material_list+' => '',
     'Class:IOTGateway/Attribute:simcard_id' => 'SIM Karte',
@@ -64,6 +90,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTSensor+' => '',
     'Class:IOTSensor/Attribute:iotgateway_list' => 'Gateway',
     'Class:IOTSensor/Attribute:iotgateway_list+' => '',
+    'Class:IOTSensor/Attribute:collection' => 'Collection',
+    'Class:IOTSensor/Attribute:collection+' => '',
     'Class:IOTSensor/Attribute:comment' => 'Anmerkung',
     'Class:IOTSensor/Attribute:comment+' => '',
 ));
@@ -153,6 +181,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Menu:IOTSpace:Devices' => 'IoT Geräte',
     'Menu:IOTSpace:Options' => 'IoT Konfiguration',
     'Menu:IOTShortCut' => 'Shotcuts',
+    'Menu:IOTCustomer' => 'IoT Kunden',
+    'Menu:IOTCustomer+' => 'IoT Kunden',
     'Menu:IOTGateway' => 'IoT Gateways',
     'Menu:IOTGateway+' => 'IoT Gateways',
     'Menu:IOTSensor' => 'IoT Sensoren',

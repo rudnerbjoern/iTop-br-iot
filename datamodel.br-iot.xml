@@ -865,7 +865,7 @@
                         <attribute id="name"/>
                     </attributes>
                 </naming>
-                <icon>../../images/icons/icons8-customer.svg</icon>
+                <icon>images/contact.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name"/>
@@ -1265,8 +1265,8 @@ Notice Giving By as Date
                 <db_final_class_field/>
                 <naming>
                     <attributes>
-                        <attribute id="iotgateway_id"/>
-                        <attribute id="iotsensor_id"/>
+                        <attribute id="iotgateway_name"/>
+                        <attribute id="iotsensor_name"/>
                     </attributes>
                 </naming>
                 <icon/>
@@ -1426,6 +1426,9 @@ Notice Giving By as Date
                             <dashlet id="iot-114" xsi:type="DashletBadge">
                                 <rank>114</rank>
                                 <class>lnkIOTGatewayToIOTSensor</class>
+                                <title>Menu:IOTCable</title>
+                                <label>cablelabel</label>
+                                <description>cabledescription</description>
                             </dashlet>
                         </dashlets>
                     </cell>
