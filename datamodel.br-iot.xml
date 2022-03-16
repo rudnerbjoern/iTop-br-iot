@@ -607,7 +607,7 @@
                         <item id="org_id">
                             <rank>10</rank>
                         </item>
-                        <item id="status">
+                        <item id="system_landscape">
                             <rank>20</rank>
                         </item>
                         <item id="location_id">
