@@ -64,6 +64,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTSensor+' => '',
     'Class:IOTSensor/Attribute:iotgateway_list' => 'Gateway',
     'Class:IOTSensor/Attribute:iotgateway_list+' => '',
+    'Class:IOTSensor/Attribute:comment' => 'Anmerkung',
+    'Class:IOTSensor/Attribute:comment+' => '',
 ));
 
 //
@@ -116,8 +118,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_id+' => '',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_name' => 'IoT Sensor Name',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_name+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:collection_port' => 'Collection Port',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:collection_port+' => '',
+    'Class:lnkIOTGatewayToIOTSensor/Attribute:port' => 'Port',
+    'Class:lnkIOTGatewayToIOTSensor/Attribute:port+' => '',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number' => 'Kabelnummer',
     'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number+' => '',
 ));
@@ -156,6 +158,6 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Menu:IOTSensor' => 'IoT Sensoren',
     'Menu:IOTSimCard' => 'IoT SIM Karten',
     'Menu:IOTSimCard+' => 'IoT SIM Karten',
-    'Menu:IOTCable' => 'IoT Cables',
-    'Menu:IOTcable+' => 'IoT Cables',
+    'Menu:IOTCable' => 'IoT Kabel',
+    'Menu:IOTCable+' => 'IoT Kabel',
 ));

@@ -372,6 +372,16 @@
                     <is_null_allowed>true</is_null_allowed>
                     <display_style>radio_horizontal</display_style>
                 </field>
+                <field id="customer_id" xsi:type="AttributeExternalKey">
+                    <sql>customer_id</sql>
+                    <target_class>IOTCustomer</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="customer_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>customer_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
                 <field id="material_list" xsi:type="AttributeImage">
                     <display_max_width>256</display_max_width>
                     <display_max_height>256</display_max_height>
@@ -387,7 +397,7 @@
                     <count_max>0</count_max>
                     <ext_key_to_remote>iotsensor_id</ext_key_to_remote>
                     <duplicates>false</duplicates>
-                    <edit_mode>in_place</edit_mode>
+                    <edit_mode>actions</edit_mode>
                 </field>
             </fields>
             <methods/>
@@ -396,6 +406,9 @@
                     <neighbours>
                         <neighbour id="IOTSensor">
                             <attribute>iotsensors_list</attribute>
+                        </neighbour>
+                        <neighbour id="IOTCustomer">
+                            <attribute>customer_id</attribute>
                         </neighbour>
                     </neighbours>
                 </relation>
@@ -427,13 +440,19 @@
                                         <item id="status">
                                             <rank>30</rank>
                                         </item>
+                                        <item id="system_landscape">
+                                            <rank>40</rank>
+                                        </item>
                                         <!-- disable presentation
                                         <item id="business_criticity">
-                                            <rank>40</rank>
+                                            <rank>50</rank>
                                         </item>
                                     -->
                                         <item id="location_id">
-                                            <rank>50</rank>
+                                            <rank>60</rank>
+                                        </item>
+                                        <item id="customer_id">
+                                            <rank>70</rank>
                                         </item>
                                     </items>
                                 </item>
@@ -545,8 +564,11 @@
                         <item id="location_id">
                             <rank>50</rank>
                         </item>
+                        <item id="customer_id">
+                            <rank>60</rank>
+                        </item>
                         <item id="application_id">
-                            <rank>50</rank>
+                            <rank>70</rank>
                         </item>
                         <!-- disable presentation
                         <item id="brand_id">
@@ -591,6 +613,9 @@
                         <item id="location_id">
                             <rank>30</rank>
                         </item>
+                        <item id="customer_id">
+                            <rank>35</rank>
+                        </item>
                         <item id="device_id">
                             <rank>40</rank>
                         </item>
@@ -630,6 +655,11 @@
                 </reconciliation>
             </properties>
             <fields>
+                <field id="collection" xsi:type="AttributeInteger">
+                    <sql>collection</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="comment" _rename_from="description"/>
                 <field id="iotgateway_list" xsi:type="AttributeLinkedSetIndirect">
                     <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
                     <ext_key_to_me>iotsensor_id</ext_key_to_me>
@@ -696,6 +726,9 @@
                                         <item id="serialnumber">
                                             <rank>70</rank>
                                         </item>
+                                        <item id="collection">
+                                            <rank>80</rank>
+                                        </item>
                                         <!-- disable presentation
                                         <item id="asset_number">
                                             <rank>80</rank>
@@ -727,7 +760,7 @@
                                 <item id="fieldset:Server:otherinfo">
                                     <rank>30</rank>
                                     <items>
-                                        <item id="description">
+                                        <item id="comment">
                                             <rank>10</rank>
                                         </item>
                                     </items>
@@ -763,6 +796,9 @@
                         </item>
                         <item id="serialnumber">
                             <rank>80</rank>
+                        </item>
+                        <item id="collection">
+                            <rank>90</rank>
                         </item>
                         <!-- disable presentation
                         <item id="asset_number">
@@ -806,6 +842,149 @@
                         </item>
                         <item id="serialnumber">
                             <rank>70</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+        <class id="IOTCustomer" _delta="define">
+            <parent>cmdbAbstractObject</parent>
+            <properties>
+                <category>bizmodel,searchable,structure</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotcustomer</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field/>
+                <naming>
+                    <attributes>
+                        <attribute id="name"/>
+                    </attributes>
+                </naming>
+                <icon>../../images/icons/icons8-customer.svg</icon>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name"/>
+                        <attribute id="org_id"/>
+                        <attribute id="org_name"/>
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <field id="name" xsi:type="AttributeString">
+                    <sql>name</sql>
+                    <default_value/>
+                    <is_null_allowed>false</is_null_allowed>
+                </field>
+                <field id="org_id" xsi:type="AttributeExternalKey">
+                    <sql>org_id</sql>
+                    <target_class>Organization</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="org_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>org_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="country" xsi:type="AttributeString">
+                    <sql>country</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="address" xsi:type="AttributeString">
+                    <sql>address</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="contact" xsi:type="AttributeString">
+                    <sql>contact</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="iotgateway_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTGateway</linked_class>
+                    <ext_key_to_me>customer_id</ext_key_to_me>
+                    <edit_mode>actions</edit_mode>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <duplicates />
+                </field>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                        <item id="iotgateway_list">
+                            <rank>100</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                    </items>
+                </search>
+                <default_search>
+                    <items>
+                        <item id="friendlyname">
+                            <rank>10</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>70</rank>
+                        </item>
+                    </items>
+                </default_search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
                         </item>
                     </items>
                 </list>
@@ -1070,28 +1249,6 @@ Notice Giving By as Date
                 </list>
             </presentation>
         </class>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <class id="lnkIOTGatewayToIOTSensor" _delta="define">
             <parent>cmdbAbstractObject</parent>
             <properties>
@@ -1137,8 +1294,8 @@ Notice Giving By as Date
                     <extkey_attcode>iotsensor_id</extkey_attcode>
                     <target_attcode>name</target_attcode>
                 </field>
-                <field id="collection_port" xsi:type="AttributeString">
-                    <sql>collection_port</sql>
+                <field id="port" xsi:type="AttributeString">
+                    <sql>port</sql>
                     <default_value/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
@@ -1158,7 +1315,7 @@ Notice Giving By as Date
                         <item id="iotsensor_id">
                             <rank>20</rank>
                         </item>
-                        <item id="collection_port">
+                        <item id="port">
                             <rank>30</rank>
                         </item>
                         <item id="cable_number">
@@ -1184,7 +1341,7 @@ Notice Giving By as Date
                         <item id="iotsensor_id">
                             <rank>20</rank>
                         </item>
-                        <item id="collection_port">
+                        <item id="port">
                             <rank>30</rank>
                         </item>
                         <item id="cable_number">
@@ -1200,7 +1357,7 @@ Notice Giving By as Date
                         <item id="iotsensor_id">
                             <rank>20</rank>
                         </item>
-                        <item id="collection_port">
+                        <item id="port">
                             <rank>30</rank>
                         </item>
                         <item id="cable_number">
@@ -1246,6 +1403,10 @@ Notice Giving By as Date
                                 <title>Menu:IOTSpace:Devices</title>
                                 <icon>iTop-br-iot/images/iot-gateway.png</icon>
                             </dashlet>
+                            <dashlet id="iot-110" xsi:type="DashletBadge">
+                                <rank>110</rank>
+                                <class>IOTCustomer</class>
+                            </dashlet>
                             <dashlet id="iot-111" xsi:type="DashletBadge">
                                 <rank>111</rank>
                                 <class>IOTGateway</class>
@@ -1257,6 +1418,10 @@ Notice Giving By as Date
                             <dashlet id="iot-113" xsi:type="DashletBadge">
                                 <rank>113</rank>
                                 <class>IOTSimCard</class>
+                            </dashlet>
+                            <dashlet id="iot-114" xsi:type="DashletBadge">
+                                <rank>114</rank>
+                                <class>lnkIOTGatewayToIOTSensor</class>
                             </dashlet>
                         </dashlets>
                     </cell>
@@ -1290,29 +1455,36 @@ Notice Giving By as Date
             <parent>IOTManagement</parent>
             <template_file/>
         </menu>
-        <menu id="IOTGateway" xsi:type="OQLMenuNode" _delta="define">
+        <menu id="IOTCustomer" xsi:type="OQLMenuNode" _delta="define">
             <rank>10</rank>
             <parent>IOTShortCut</parent>
             <oql>SELECT IOTGateway</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
-        <menu id="IOTSensor" xsi:type="OQLMenuNode" _delta="define">
+        <menu id="IOTGateway" xsi:type="OQLMenuNode" _delta="define">
             <rank>20</rank>
+            <parent>IOTShortCut</parent>
+            <oql>SELECT IOTGateway</oql>
+            <do_search>1</do_search>
+            <auto_reload>fast</auto_reload>
+        </menu>
+        <menu id="IOTSensor" xsi:type="OQLMenuNode" _delta="define">
+            <rank>30</rank>
             <parent>IOTShortCut</parent>
             <oql>SELECT IOTSensor</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
         <menu id="IOTSimCard" xsi:type="OQLMenuNode" _delta="define">
-            <rank>20</rank>
+            <rank>40</rank>
             <parent>IOTShortCut</parent>
             <oql>SELECT IOTSimCard</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
         <menu id="IOTCable" xsi:type="OQLMenuNode" _delta="define">
-            <rank>20</rank>
+            <rank>50</rank>
             <parent>IOTShortCut</parent>
             <oql>SELECT lnkIOTGatewayToIOTSensor</oql>
             <do_search>1</do_search>
@@ -1345,6 +1517,7 @@ Notice Giving By as Date
         <groups>
             <group id="IOT" _delta="define">
                 <classes>
+                    <class id="IOTCustomer"/>
                     <class id="IOTGateway"/>
                     <class id="IOTSensor"/>
                     <class id="IOTSimCard"/>
