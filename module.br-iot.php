@@ -21,6 +21,7 @@ SetupWebPage::AddModule(
         //
         'dependencies' => array(
             'itop-config-mgmt/2.4.0',
+            'br-landscape/0.2.0',
         ),
         'mandatory' => false,
         'visible' => true,
