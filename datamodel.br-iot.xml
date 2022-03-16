@@ -659,7 +659,11 @@
                     <sql>collection</sql>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="comment" _rename_from="description"/>
+                <field id="comment" _rename_from="description" xsi:type="AttributeText">
+                    <sql>comment</sql>
+                    <default_value />
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
                 <field id="iotgateway_list" xsi:type="AttributeLinkedSetIndirect">
                     <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
                     <ext_key_to_me>iotsensor_id</ext_key_to_me>
