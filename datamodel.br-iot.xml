@@ -901,6 +901,18 @@
                 </reconciliation>
             </properties>
             <fields>
+
+                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
+                    <sql>iotgateway_id</sql>
+                    <target_class>IOTGateway</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_AUTO</on_target_delete>
+                </field>
+                <field id="iotgateway_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>iotgateway_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+
             </fields>
             <methods/>
             <presentation>
@@ -915,13 +927,13 @@
                         <item id="status">
                             <rank>30</rank>
                         </item>
+                        <item id="iotgateway_id">
+                            <rank>60</rank>
+                        </item>
                         <item id="serialnumber">
                             <rank>70</rank>
                         </item>
-                        <!-- HACK: Replace this
-                        <item id="iotgateway_list">
-                            <rank>120</rank>
-                        </item> -->
+
                     </items>
                 </details>
                 <search>
@@ -935,6 +947,9 @@
                         <item id="status">
                             <rank>30</rank>
                         </item>
+                        <item id="iotgateway_id">
+                            <rank>60</rank>
+                        </item>
                         <item id="serialnumber">
                             <rank>80</rank>
                         </item>
@@ -947,6 +962,9 @@
                         </item>
                         <item id="status">
                             <rank>20</rank>
+                        </item>
+                        <item id="iotgateway_id">
+                            <rank>60</rank>
                         </item>
                         <item id="serialnumber">
                             <rank>70</rank>
