@@ -704,9 +704,6 @@
                             <rank>30</rank>
                         </item>
                         -->
-                        <item id="iotgateway_list">
-                            <rank>40</rank>
-                        </item>
                         <item id="col:col1">
                             <rank>80</rank>
                             <items>
@@ -921,9 +918,10 @@
                         <item id="serialnumber">
                             <rank>70</rank>
                         </item>
+                        <!-- HACK: Replace this
                         <item id="iotgateway_list">
                             <rank>120</rank>
-                        </item>
+                        </item> -->
                     </items>
                 </details>
                 <search>
