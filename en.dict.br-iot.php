@@ -135,27 +135,6 @@ Dict::Add('EN US', 'English', 'English', array(
 ));
 
 //
-// Class: lnkIOTGatewayToIOTSensor
-//
-Dict::Add('EN US', 'English', 'English', array(
-    'Class:lnkIOTGatewayToIOTSensor' => 'Link IoT Gateway / IoT Sensor',
-    'Class:lnkIOTGatewayToIOTSensor+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotgateway_id' => 'IoT Gateway',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotgateway_id+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotgateway_name' => 'IoT Gateway name',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotgateway_name+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_id' => 'IoT Sensor',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_id+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_name' => 'IoT Sensor name',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:iotsensor_name+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:port' => 'Port',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:port+' => '',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number' => 'Cable number',
-    'Class:lnkIOTGatewayToIOTSensor/Attribute:cable_number+' => '',
-));
-
-
-//
 // Class: IOTSimCard
 //
 Dict::Add('EN US', 'English', 'English', array(

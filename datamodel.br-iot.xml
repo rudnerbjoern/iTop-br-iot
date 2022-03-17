@@ -309,6 +309,7 @@
                     <target_class>IOTSimCard</target_class>
                     <is_null_allowed>true</is_null_allowed>
                     <on_target_delete>DEL_MANUAL</on_target_delete>
+                    <allow_target_creation>true</allow_target_creation>
                 </field>
                 <field id="simcard_name" xsi:type="AttributeExternalField">
                     <extkey_attcode>simcard_id</extkey_attcode>
@@ -390,13 +391,18 @@
                     <default_image/>
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="iotsensors_list" xsi:type="AttributeLinkedSetIndirect">
-                    <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
+                <field id="iotcables_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTCable</linked_class>
                     <ext_key_to_me>iotgateway_id</ext_key_to_me>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
-                    <ext_key_to_remote>iotsensor_id</ext_key_to_remote>
-                    <duplicates>false</duplicates>
+                    <edit_mode>actions</edit_mode>
+                </field>
+                <field id="iotsensors_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTSensor</linked_class>
+                    <ext_key_to_me>iotgateway_id</ext_key_to_me>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
                     <edit_mode>actions</edit_mode>
                 </field>
             </fields>
@@ -410,6 +416,9 @@
                         <neighbour id="IOTCustomer">
                             <attribute>customer_id</attribute>
                         </neighbour>
+                        <neighbour id="IOTCable">
+                            <attribute>iotcables_list</attribute>
+                        </neighbour>
                     </neighbours>
                 </relation>
             </relations>
@@ -421,6 +430,9 @@
                         </item>
                         <item id="documents_list">
                             <rank>20</rank>
+                        </item>
+                        <item id="iotcables_list">
+                            <rank>30</rank>
                         </item>
                         <item id="iotsensors_list">
                             <rank>40</rank>
@@ -664,13 +676,15 @@
                     <default_value />
                     <is_null_allowed>true</is_null_allowed>
                 </field>
-                <field id="iotgateway_list" xsi:type="AttributeLinkedSetIndirect">
-                    <linked_class>lnkIOTGatewayToIOTSensor</linked_class>
-                    <ext_key_to_me>iotsensor_id</ext_key_to_me>
-                    <count_min>0</count_min>
-                    <count_max>1</count_max>
-                    <ext_key_to_remote>iotgateway_id</ext_key_to_remote>
-                    <duplicates>false</duplicates>
+                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
+                    <sql>iotgateway_id</sql>
+                    <target_class>IOTGateway</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_AUTO</on_target_delete>
+                </field>
+                <field id="iotgateway_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>iotgateway_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
                 </field>
             </fields>
             <methods/>
@@ -715,6 +729,9 @@
                                     -->
                                         <item id="location_id">
                                             <rank>50</rank>
+                                        </item>
+                                        <item id="iotgateway_id">
+                                            <rank>60</rank>
                                         </item>
                                     </items>
                                 </item>
@@ -792,6 +809,9 @@
                         <item id="location_id">
                             <rank>50</rank>
                         </item>
+                        <item id="iotgateway_id">
+                            <rank>55</rank>
+                        </item>
                         <item id="brand_id">
                             <rank>60</rank>
                         </item>
@@ -838,6 +858,9 @@
                         <item id="location_id">
                             <rank>40</rank>
                         </item>
+                        <item id="iotgateway_id">
+                            <rank>45</rank>
+                        </item>
                         <item id="brand_id">
                             <rank>50</rank>
                         </item>
@@ -851,6 +874,96 @@
                 </list>
             </presentation>
         </class>
+
+
+
+
+
+
+        <class id="IOTCable" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotcable</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field />
+                <naming>
+                    <attributes>
+                        <attribute id="name" />
+                    </attributes>
+                </naming>
+                <icon>images/din1.png</icon>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name" />
+                        <attribute id="org_id" />
+                        <attribute id="organization_name" />
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>70</rank>
+                        </item>
+                        <item id="iotgateway_list">
+                            <rank>120</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="status">
+                            <rank>20</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>70</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+
+
+
+
+
+
+
         <class id="IOTCustomer" _delta="define">
             <parent>cmdbAbstractObject</parent>
             <properties>
@@ -1253,124 +1366,6 @@ Notice Giving By as Date
                 </list>
             </presentation>
         </class>
-        <class id="lnkIOTGatewayToIOTSensor" _delta="define">
-            <parent>cmdbAbstractObject</parent>
-            <properties>
-                <is_link>1</is_link>
-                <category>bizmodel</category>
-                <abstract>false</abstract>
-                <key_type>autoincrement</key_type>
-                <db_table>lnkiotgatewaytoiotsensor</db_table>
-                <db_key_field>id</db_key_field>
-                <db_final_class_field/>
-                <naming>
-                    <attributes>
-                        <attribute id="iotgateway_name"/>
-                        <attribute id="iotsensor_name"/>
-                    </attributes>
-                </naming>
-                <icon>images/patchcable.png</icon>
-                <reconciliation>
-                    <attributes>
-                        <attribute id="iotgateway_id"/>
-                        <attribute id="iotsensor_id"/>
-                    </attributes>
-                </reconciliation>
-            </properties>
-            <fields>
-                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
-                    <sql>iotgateway_id</sql>
-                    <target_class>IOTGateway</target_class>
-                    <is_null_allowed>false</is_null_allowed>
-                    <on_target_delete>DEL_AUTO</on_target_delete>
-                </field>
-                <field id="iotgateway_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>iotgateway_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="iotsensor_id" xsi:type="AttributeExternalKey">
-                    <sql>iotsensor_id</sql>
-                    <target_class>IOTSensor</target_class>
-                    <is_null_allowed>false</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                </field>
-                <field id="iotsensor_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>iotsensor_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="port" xsi:type="AttributeString">
-                    <sql>port</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="cable_number" xsi:type="AttributeString">
-                    <sql>cable_number</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-            </fields>
-            <methods/>
-            <presentation>
-                <details>
-                    <items>
-                        <item id="iotgateway_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="iotsensor_id">
-                            <rank>20</rank>
-                        </item>
-                        <item id="port">
-                            <rank>30</rank>
-                        </item>
-                        <item id="cable_number">
-                            <rank>40</rank>
-                        </item>
-                    </items>
-                </details>
-                <default_search>
-                    <items>
-                        <item id="iotgateway_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="iotsensor_id">
-                            <rank>20</rank>
-                        </item>
-                    </items>
-                </default_search>
-                <search>
-                    <items>
-                        <item id="iotgateway_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="iotsensor_id">
-                            <rank>20</rank>
-                        </item>
-                        <item id="port">
-                            <rank>30</rank>
-                        </item>
-                        <item id="cable_number">
-                            <rank>40</rank>
-                        </item>
-                    </items>
-                </search>
-                <list>
-                    <items>
-                        <item id="iotgateway_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="iotsensor_id">
-                            <rank>20</rank>
-                        </item>
-                        <item id="port">
-                            <rank>30</rank>
-                        </item>
-                        <item id="cable_number">
-                            <rank>40</rank>
-                        </item>
-                    </items>
-                </list>
-            </presentation>
-        </class>
         <class id="Model" _delta="must_exist">
             <fields>
                 <field id="type" xsi:type="AttributeEnum" _delta="must_exist">
@@ -1425,8 +1420,7 @@ Notice Giving By as Date
                             </dashlet>
                             <dashlet id="iot-114" xsi:type="DashletBadge">
                                 <rank>114</rank>
-                                <class>lnkIOTGatewayToIOTSensor</class>
-                                <title>Menu:IOTCable</title>
+                                <class>IOTCable</class>
                             </dashlet>
                         </dashlets>
                     </cell>
@@ -1491,7 +1485,7 @@ Notice Giving By as Date
         <menu id="IOTCable" xsi:type="OQLMenuNode" _delta="define">
             <rank>50</rank>
             <parent>IOTShortCut</parent>
-            <oql>SELECT lnkIOTGatewayToIOTSensor</oql>
+            <oql>SELECT IOTCable</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
@@ -1526,7 +1520,7 @@ Notice Giving By as Date
                     <class id="IOTGateway"/>
                     <class id="IOTSensor"/>
                     <class id="IOTSimCard"/>
-                    <class id="lnkIOTGatewayToIOTSensor"/>
+                    <class id="IOTCable"/>
                     <class id="IOTProgramVersion"/>
                     <class id="IOTFirmwareVersion"/>
                     <class id="IOTApplication"/>
