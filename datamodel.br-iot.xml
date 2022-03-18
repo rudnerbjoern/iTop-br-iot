@@ -1,9 +1,1007 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.7">    <!--
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.7">
+    <!--
     * @copyright   Copyright (C) 2022 Björn Rudner
     * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
     -->
     <classes>
+        <!-- ***************** IOTCustomer ***************** -->
+        <class id="IOTCustomer" _delta="define">
+            <parent>cmdbAbstractObject</parent>
+            <properties>
+                <category>bizmodel,searchable,structure</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotcustomer</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field/>
+                <naming>
+                    <attributes>
+                        <attribute id="name"/>
+                    </attributes>
+                </naming>
+                <icon>images/contact.png</icon>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name"/>
+                        <attribute id="org_id"/>
+                        <attribute id="org_name"/>
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <field id="name" xsi:type="AttributeString">
+                    <sql>name</sql>
+                    <default_value/>
+                    <is_null_allowed>false</is_null_allowed>
+                </field>
+                <field id="org_id" xsi:type="AttributeExternalKey">
+                    <sql>org_id</sql>
+                    <target_class>Organization</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="org_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>org_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="country" xsi:type="AttributeString">
+                    <sql>country</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="address" xsi:type="AttributeString">
+                    <sql>address</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="contact" xsi:type="AttributeString">
+                    <sql>contact</sql>
+                    <default_value/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="iotgateway_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTGateway</linked_class>
+                    <ext_key_to_me>customer_id</ext_key_to_me>
+                    <edit_mode>actions</edit_mode>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <duplicates />
+                </field>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                        <item id="iotgateway_list">
+                            <rank>100</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                    </items>
+                </search>
+                <default_search>
+                    <items>
+                        <item id="friendlyname">
+                            <rank>10</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>70</rank>
+                        </item>
+                    </items>
+                </default_search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+        <!-- ***************** IOTGateway ***************** -->
+        <class id="IOTGateway" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotgateway</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field/>
+                <icon>images/plc.png</icon>
+                <naming>
+                    <attributes>
+                        <attribute id="name"/>
+                    </attributes>
+                </naming>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name"/>
+                        <attribute id="device_id"/>
+                        <attribute id="org_id"/>
+                        <attribute id="organization_name"/>
+                    </attributes>
+                </reconciliation>
+                <uniqueness_rules>
+                    <rule id="device_id">
+                        <attributes>
+                            <attribute id="org_id"/>
+                            <attribute id="device_id"/>
+                        </attributes>
+                        <filter><![CDATA[device_id != '']]></filter>
+                        <disabled>false</disabled>
+                        <is_blocking>true</is_blocking>
+                    </rule>
+                </uniqueness_rules>
+            </properties>
+            <fields>
+                <field id="device_id" xsi:type="AttributeString">
+                    <sql>device_id</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                    <!-- <validation_pattern>^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$</validation_pattern> -->
+                </field>
+                <field id="cert_created" xsi:type="AttributeEnum">
+                    <values>
+                        <value id="yes">
+                            <code>yes</code>
+                        </value>
+                        <value id="no">
+                            <code>no</code>
+                        </value>
+                    </values>
+                    <sql>cert_created</sql>
+                    <default_value>no</default_value>
+                    <is_null_allowed>true</is_null_allowed>
+                    <display_style>radio_horizontal</display_style>
+                </field>
+                <field id="cert_expire_date" xsi:type="AttributeDate">
+                    <sql>cert_expire_date</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="simcard_id" xsi:type="AttributeExternalKey">
+                    <sql>simcard_id</sql>
+                    <target_class>IOTSimCard</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                    <allow_target_creation>true</allow_target_creation>
+                </field>
+                <field id="simcard_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>simcard_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="programversion_id" xsi:type="AttributeExternalKey">
+                    <sql>programversion_id</sql>
+                    <target_class>IOTProgramVersion</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="programversion_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>programversion_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="firmwareversion_id" xsi:type="AttributeExternalKey">
+                    <sql>firmwareversion_id</sql>
+                    <target_class>IOTFirmwareVersion</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="firmwareversion_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>firmwareversion_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="application_id" xsi:type="AttributeExternalKey">
+                    <sql>application_id</sql>
+                    <target_class>IOTApplication</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="application_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>application_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="remote_access" xsi:type="AttributeEnum">
+                    <values>
+                        <value id="yes">
+                            <code>yes</code>
+                        </value>
+                        <value id="no">
+                            <code>no</code>
+                        </value>
+                    </values>
+                    <sql>remote_access</sql>
+                    <default_value>no</default_value>
+                    <is_null_allowed>true</is_null_allowed>
+                    <display_style>radio_horizontal</display_style>
+                </field>
+                <field id="vpnd" xsi:type="AttributeEnum">
+                    <values>
+                        <value id="yes">
+                            <code>yes</code>
+                        </value>
+                        <value id="no">
+                            <code>no</code>
+                        </value>
+                    </values>
+                    <sql>vpnd</sql>
+                    <default_value>no</default_value>
+                    <is_null_allowed>true</is_null_allowed>
+                    <display_style>radio_horizontal</display_style>
+                </field>
+                <field id="customer_id" xsi:type="AttributeExternalKey">
+                    <sql>customer_id</sql>
+                    <target_class>IOTCustomer</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="customer_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>customer_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+                <field id="material_list" xsi:type="AttributeImage">
+                    <display_max_width>256</display_max_width>
+                    <display_max_height>256</display_max_height>
+                    <storage_max_width>8000</storage_max_width>
+                    <storage_max_height>8000</storage_max_height>
+                    <default_image/>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="iotcables_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTCable</linked_class>
+                    <ext_key_to_me>iotgateway_id</ext_key_to_me>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <edit_mode>actions</edit_mode>
+                </field>
+                <field id="iotsensors_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTSensor</linked_class>
+                    <ext_key_to_me>iotgateway_id</ext_key_to_me>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <edit_mode>actions</edit_mode>
+                </field>
+            </fields>
+            <methods/>
+            <relations>
+                <relation id="impacts">
+                    <neighbours>
+                        <neighbour id="IOTSensor">
+                            <attribute>iotsensors_list</attribute>
+                        </neighbour>
+                        <neighbour id="IOTCustomer">
+                            <attribute>customer_id</attribute>
+                        </neighbour>
+                        <neighbour id="IOTCable">
+                            <attribute>iotcables_list</attribute>
+                        </neighbour>
+                        <neighbour id="IOTSimCard">
+                            <attribute>simcard_id</attribute>
+                        </neighbour>
+                    </neighbours>
+                </relation>
+            </relations>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="contacts_list">
+                            <rank>10</rank>
+                        </item>
+                        <item id="documents_list">
+                            <rank>20</rank>
+                        </item>
+                        <item id="iotcables_list">
+                            <rank>30</rank>
+                        </item>
+                        <item id="iotsensors_list">
+                            <rank>40</rank>
+                        </item>
+                        <item id="col:col1">
+                            <rank>80</rank>
+                            <items>
+                                <item id="fieldset:Server:baseinfo">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="name">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="org_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="status">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="system_landscape">
+                                            <rank>40</rank>
+                                        </item>
+                                        <item id="location_id">
+                                            <rank>60</rank>
+                                        </item>
+                                        <item id="customer_id">
+                                            <rank>70</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:Server:moreinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="device_id">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="simcard_id">
+                                            <rank>35</rank>
+                                        </item>
+                                        <item id="application_id">
+                                            <rank>40</rank>
+                                        </item>
+                                        <item id="programversion_id">
+                                            <rank>50</rank>
+                                        </item>
+                                        <item id="firmwareversion_id">
+                                            <rank>60</rank>
+                                        </item>
+                                        <item id="remote_access">
+                                            <rank>70</rank>
+                                        </item>
+                                        <item id="vpnd">
+                                            <rank>80</rank>
+                                        </item>
+                                        <item id="serialnumber">
+                                            <rank>90</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                        <item id="col:col2">
+                            <rank>90</rank>
+                            <items>
+                                <item id="fieldset:IOTGateway:Certificate">
+                                    <rank>20</rank>
+                                    <items>
+                                        <item id="cert_created">
+                                            <rank>80</rank>
+                                        </item>
+                                        <item id="cert_expire_date">
+                                            <rank>90</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:Server:otherinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="material_list">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="description">
+                                            <rank>20</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="system_landscape">
+                            <rank>40</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="customer_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="application_id">
+                            <rank>70</rank>
+                        </item>
+                        <item id="device_id">
+                            <rank>80</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>90</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="system_landscape">
+                            <rank>20</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="customer_id">
+                            <rank>35</rank>
+                        </item>
+                        <item id="device_id">
+                            <rank>40</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+        <!-- ***************** IOTSimCard ***************** -->
+        <class id="IOTSimCard" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable,structure</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotsimcard</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field/>
+                <icon>images/sim.png</icon>
+                <naming>
+                    <attributes>
+                        <attribute id="name"/>
+                    </attributes>
+                </naming>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name"/>
+                        <attribute id="sim"/>
+                        <attribute id="org_id"/>
+                        <attribute id="organization_name"/>
+                    </attributes>
+                </reconciliation>
+                <order>
+                    <columns>
+                        <column id="name" ascending="true"/>
+                    </columns>
+                </order>
+                <uniqueness_rules>
+                    <rule id="sim">
+                        <attributes>
+                            <attribute id="org_id"/>
+                            <attribute id="sim"/>
+                        </attributes>
+                        <filter><![CDATA[sim != '']]></filter>
+                        <disabled>false</disabled>
+                        <is_blocking>true</is_blocking>
+                    </rule>
+                </uniqueness_rules>
+            </properties>
+            <fields>
+                <field id="iotgateways_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTGateway</linked_class>
+                    <ext_key_to_me>simcard_id</ext_key_to_me>
+                    <edit_mode>none</edit_mode>
+                    <count_min>0</count_min>
+                    <count_max>1</count_max>
+                </field>
+                <field id="sim" xsi:type="AttributeString">
+                    <sql>sim</sql>
+                    <is_null_allowed>false</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="phone_number" xsi:type="AttributePhoneNumber">
+                    <sql>phone_number</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="pin" xsi:type="AttributeString">
+                    <sql>pin</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="puk" xsi:type="AttributeString">
+                    <sql>puk</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="contract_start_date" xsi:type="AttributeDate">
+                    <sql>contract_start_date</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="contract_end_date" xsi:type="AttributeDate">
+                    <sql>contract_end_date</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="termination_till_date" xsi:type="AttributeDate">
+                    <sql>termination_till_date</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="extended_till_date" xsi:type="AttributeDate">
+                    <sql>extended_till_date</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+                <field id="notice_by_date" xsi:type="AttributeDate">
+                    <sql>notice_by_date</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="contacts_list">
+                            <rank>10</rank>
+                        </item>
+                        <item id="documents_list">
+                            <rank>20</rank>
+                        </item>
+                        <item id="iotgateways_list">
+                            <rank>25</rank>
+                        </item>
+                        <item id="providercontracts_list">
+                            <rank>30</rank>
+                        </item>
+                        <item id="col:col1">
+                            <rank>100</rank>
+                            <items>
+                                <item id="fieldset:IOTSimCard:info">
+                                    <rank>1</rank>
+                                    <items>
+                                        <item id="name">
+                                            <rank>1</rank>
+                                        </item>
+                                        <item id="org_id">
+                                            <rank>2</rank>
+                                        </item>
+                                        <item id="status">
+                                            <rank>31</rank>
+                                        </item>
+                                        <item id="location_id">
+                                            <rank>32</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:IOTSimCard:numbers">
+                                    <rank>20</rank>
+                                    <items>
+                                        <item id="phone_number">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="sim">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="pin">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="puk">
+                                            <rank>40</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                        <item id="col:col2">
+                            <rank>110</rank>
+                            <items>
+                                <item id="fieldset:IOTSimCard:date">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="contract_start_date">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="contract_end_date">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="termination_till_date">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="extended_till_date">
+                                            <rank>40</rank>
+                                        </item>
+                                        <item id="notice_by_date">
+                                            <rank>50</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:Server:otherinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="description">
+                                            <rank>10</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>1</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>2</rank>
+                        </item>
+                        <item id="sim">
+                            <rank>3</rank>
+                        </item>
+                        <item id="phone_number">
+                            <rank>4</rank>
+                        </item>
+                        <item id="status">
+                            <rank>31</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>32</rank>
+                        </item>
+                    </items>
+                </search>
+                <default_search>
+                    <items>
+                        <item id="name">
+                            <rank>1</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>2</rank>
+                        </item>
+                        <item id="sim">
+                            <rank>3</rank>
+                        </item>
+                        <item id="phone_number">
+                            <rank>4</rank>
+                        </item>
+                        <item id="status">
+                            <rank>31</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>32</rank>
+                        </item>
+                    </items>
+                </default_search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>2</rank>
+                        </item>
+                        <item id="sim">
+                            <rank>3</rank>
+                        </item>
+                        <item id="phone_number">
+                            <rank>4</rank>
+                        </item>
+                        <item id="status">
+                            <rank>31</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>32</rank>
+                        </item>
+                        <item id="description">
+                            <rank>33</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+        <!-- ***************** IOTSensor ***************** -->
+        <class id="IOTSensor" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotsensor</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field />
+                <naming>
+                    <attributes>
+                        <attribute id="name" />
+                    </attributes>
+                </naming>
+                <icon>images/din1.png</icon>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name" />
+                        <attribute id="org_id" />
+                        <attribute id="organization_name" />
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <field id="collection" xsi:type="AttributeInteger">
+                    <sql>collection</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="comment" _rename_from="description" xsi:type="AttributeText">
+                    <sql>comment</sql>
+                    <default_value />
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
+                    <sql>iotgateway_id</sql>
+                    <target_class>IOTGateway</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                    <allow_target_creation>false</allow_target_creation>
+                </field>
+                <field id="iotgateway_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>iotgateway_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="contacts_list">
+                            <rank>10</rank>
+                        </item>
+                        <item id="documents_list">
+                            <rank>20</rank>
+                        </item>
+                        <item id="col:col1">
+                            <rank>80</rank>
+                            <items>
+                                <item id="fieldset:Server:baseinfo">
+                                    <rank>10</rank>
+                                    <items>
+                                        <item id="name">
+                                            <rank>10</rank>
+                                        </item>
+                                        <item id="org_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="status">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="location_id">
+                                            <rank>40</rank>
+                                        </item>
+                                        <item id="iotgateway_id">
+                                            <rank>50</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                                <item id="fieldset:Server:moreinfo">
+                                    <rank>20</rank>
+                                    <items>
+                                        <item id="brand_id">
+                                            <rank>20</rank>
+                                        </item>
+                                        <item id="model_id">
+                                            <rank>30</rank>
+                                        </item>
+                                        <item id="serialnumber">
+                                            <rank>70</rank>
+                                        </item>
+                                        <item id="collection">
+                                            <rank>80</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                        <item id="col:col2">
+                            <rank>90</rank>
+                            <items>
+                                <item id="fieldset:Server:otherinfo">
+                                    <rank>30</rank>
+                                    <items>
+                                        <item id="comment">
+                                            <rank>10</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="location_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="iotgateway_id">
+                            <rank>55</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>70</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                        <item id="collection">
+                            <rank>90</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="org_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="status">
+                            <rank>20</rank>
+                        </item>
+                        <item id="iotgateway_id">
+                            <rank>40</rank>
+                        </item>
+                        <item id="brand_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>70</rank>
+                        </item>
+                        <item id="collection">
+                            <rank>80</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+        <!-- ***************** IOTCable ***************** -->
+        <class id="IOTCable" _delta="define">
+            <parent>PhysicalDevice</parent>
+            <properties>
+                <category>bizmodel,searchable</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotcable</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field />
+                <naming>
+                    <attributes>
+                        <attribute id="name" />
+                    </attributes>
+                </naming>
+                <icon>images/patch.png</icon>
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name" />
+                        <attribute id="org_id" />
+                        <attribute id="organization_name" />
+                    </attributes>
+                </reconciliation>
+            </properties>
+            <fields>
+                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
+                    <sql>iotgateway_id</sql>
+                    <target_class>IOTGateway</target_class>
+                    <is_null_allowed>false</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                    <allow_target_creation>false</allow_target_creation>
+                </field>
+                <field id="iotgateway_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>iotgateway_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+            </fields>
+            <methods/>
+            <presentation>
+                <details>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="iotgateway_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>70</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                        <item id="iotgateway_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="iotgateway_id">
+                            <rank>10</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>20</rank>
+                        </item>
+                        <item id="status">
+                            <rank>30</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
+        <!-- ***************** Typology ***************** -->
         <class id="IOTProgramVersion" _delta="define">
             <parent>Typology</parent>
             <properties>
@@ -244,1144 +1242,6 @@
                 </list>
             </presentation>
         </class>
-        <class id="IOTGateway" _delta="define">
-            <parent>PhysicalDevice</parent>
-            <properties>
-                <category>bizmodel,searchable</category>
-                <abstract>false</abstract>
-                <key_type>autoincrement</key_type>
-                <db_table>iotgateway</db_table>
-                <db_key_field>id</db_key_field>
-                <db_final_class_field/>
-                <icon>images/plc.png</icon>
-                <naming>
-                    <attributes>
-                        <attribute id="name"/>
-                    </attributes>
-                </naming>
-                <reconciliation>
-                    <attributes>
-                        <attribute id="name"/>
-                        <attribute id="org_id"/>
-                        <attribute id="organization_name"/>
-                    </attributes>
-                </reconciliation>
-                <uniqueness_rules>
-                    <rule id="device_id">
-                        <attributes>
-                            <attribute id="org_id"/>
-                            <attribute id="device_id"/>
-                        </attributes>
-                        <filter><![CDATA[device_id != '']]></filter>
-                        <disabled>false</disabled>
-                        <is_blocking>true</is_blocking>
-                    </rule>
-                </uniqueness_rules>
-            </properties>
-            <fields>
-                <field id="device_id" xsi:type="AttributeString">
-                    <sql>device_id</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                    <validation_pattern>^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$</validation_pattern>
-                </field>
-                <field id="cert_created" xsi:type="AttributeEnum">
-                    <values>
-                        <value id="yes">
-                            <code>yes</code>
-                        </value>
-                        <value id="no">
-                            <code>no</code>
-                        </value>
-                    </values>
-                    <sql>cert_created</sql>
-                    <default_value>no</default_value>
-                    <is_null_allowed>true</is_null_allowed>
-                    <display_style>radio_horizontal</display_style>
-                </field>
-                <field id="cert_expire_date" xsi:type="AttributeDate">
-                    <sql>cert_expire_date</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="simcard_id" xsi:type="AttributeExternalKey">
-                    <sql>simcard_id</sql>
-                    <target_class>IOTSimCard</target_class>
-                    <is_null_allowed>true</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                    <allow_target_creation>true</allow_target_creation>
-                </field>
-                <field id="simcard_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>simcard_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="programversion_id" xsi:type="AttributeExternalKey">
-                    <sql>programversion_id</sql>
-                    <target_class>IOTProgramVersion</target_class>
-                    <is_null_allowed>true</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                </field>
-                <field id="programversion_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>programversion_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="firmwareversion_id" xsi:type="AttributeExternalKey">
-                    <sql>firmwareversion_id</sql>
-                    <target_class>IOTFirmwareVersion</target_class>
-                    <is_null_allowed>true</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                </field>
-                <field id="firmwareversion_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>firmwareversion_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="application_id" xsi:type="AttributeExternalKey">
-                    <sql>application_id</sql>
-                    <target_class>IOTApplication</target_class>
-                    <is_null_allowed>true</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                </field>
-                <field id="application_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>application_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="remote_access" xsi:type="AttributeEnum">
-                    <values>
-                        <value id="yes">
-                            <code>yes</code>
-                        </value>
-                        <value id="no">
-                            <code>no</code>
-                        </value>
-                    </values>
-                    <sql>remote_access</sql>
-                    <default_value>no</default_value>
-                    <is_null_allowed>true</is_null_allowed>
-                    <display_style>radio_horizontal</display_style>
-                </field>
-                <field id="vpnd" xsi:type="AttributeEnum">
-                    <values>
-                        <value id="yes">
-                            <code>yes</code>
-                        </value>
-                        <value id="no">
-                            <code>no</code>
-                        </value>
-                    </values>
-                    <sql>vpnd</sql>
-                    <default_value>no</default_value>
-                    <is_null_allowed>true</is_null_allowed>
-                    <display_style>radio_horizontal</display_style>
-                </field>
-                <field id="customer_id" xsi:type="AttributeExternalKey">
-                    <sql>customer_id</sql>
-                    <target_class>IOTCustomer</target_class>
-                    <is_null_allowed>true</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                </field>
-                <field id="customer_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>customer_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="material_list" xsi:type="AttributeImage">
-                    <display_max_width>256</display_max_width>
-                    <display_max_height>256</display_max_height>
-                    <storage_max_width>8000</storage_max_width>
-                    <storage_max_height>8000</storage_max_height>
-                    <default_image/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="iotcables_list" xsi:type="AttributeLinkedSet">
-                    <linked_class>IOTCable</linked_class>
-                    <ext_key_to_me>iotgateway_id</ext_key_to_me>
-                    <count_min>0</count_min>
-                    <count_max>0</count_max>
-                    <edit_mode>actions</edit_mode>
-                </field>
-                <field id="iotsensors_list" xsi:type="AttributeLinkedSet">
-                    <linked_class>IOTSensor</linked_class>
-                    <ext_key_to_me>iotgateway_id</ext_key_to_me>
-                    <count_min>0</count_min>
-                    <count_max>0</count_max>
-                    <edit_mode>actions</edit_mode>
-                </field>
-            </fields>
-            <methods/>
-            <relations>
-                <relation id="impacts">
-                    <neighbours>
-                        <neighbour id="IOTSensor">
-                            <attribute>iotsensors_list</attribute>
-                        </neighbour>
-                        <neighbour id="IOTCustomer">
-                            <attribute>customer_id</attribute>
-                        </neighbour>
-                        <neighbour id="IOTCable">
-                            <attribute>iotcables_list</attribute>
-                        </neighbour>
-                    </neighbours>
-                </relation>
-            </relations>
-            <presentation>
-                <details>
-                    <items>
-                        <item id="contacts_list">
-                            <rank>10</rank>
-                        </item>
-                        <item id="documents_list">
-                            <rank>20</rank>
-                        </item>
-                        <item id="iotcables_list">
-                            <rank>30</rank>
-                        </item>
-                        <item id="iotsensors_list">
-                            <rank>40</rank>
-                        </item>
-                        <item id="col:col1">
-                            <rank>80</rank>
-                            <items>
-                                <item id="fieldset:Server:baseinfo">
-                                    <rank>10</rank>
-                                    <items>
-                                        <item id="name">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="org_id">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="status">
-                                            <rank>30</rank>
-                                        </item>
-                                        <item id="system_landscape">
-                                            <rank>40</rank>
-                                        </item>
-                                        <!-- disable presentation
-                                        <item id="business_criticity">
-                                            <rank>50</rank>
-                                        </item>
-                                    -->
-                                        <item id="location_id">
-                                            <rank>60</rank>
-                                        </item>
-                                        <item id="customer_id">
-                                            <rank>70</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                                <item id="fieldset:Server:moreinfo">
-                                    <rank>30</rank>
-                                    <items>
-                                        <!-- disable presentation
-                                        <item id="brand_id">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="model_id">
-                                            <rank>20</rank>
-                                        </item>
-                                    -->
-                                        <item id="device_id">
-                                            <rank>30</rank>
-                                        </item>
-                                        <item id="simcard_id">
-                                            <rank>35</rank>
-                                        </item>
-                                        <item id="application_id">
-                                            <rank>40</rank>
-                                        </item>
-                                        <item id="programversion_id">
-                                            <rank>50</rank>
-                                        </item>
-                                        <item id="firmwareversion_id">
-                                            <rank>60</rank>
-                                        </item>
-                                        <item id="remote_access">
-                                            <rank>70</rank>
-                                        </item>
-                                        <item id="vpnd">
-                                            <rank>80</rank>
-                                        </item>
-                                        <!-- disable presentation
-                                        <item id="serialnumber">
-                                            <rank>90</rank>
-                                        </item>
-                                        <item id="asset_number">
-                                            <rank>100</rank>
-                                        </item>
-                                    -->
-                                    </items>
-                                </item>
-                            </items>
-                        </item>
-                        <item id="col:col2">
-                            <rank>90</rank>
-                            <items>
-                                <!-- disable presentation
-                                <item id="fieldset:Server:Date">
-                                    <rank>10</rank>
-                                    <items>
-                                        <item id="move2production">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="purchase_date">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="end_of_warranty">
-                                            <rank>30</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                            -->
-                                <item id="fieldset:IOTGateway:Certificate">
-                                    <rank>20</rank>
-                                    <items>
-                                        <item id="cert_created">
-                                            <rank>80</rank>
-                                        </item>
-                                        <item id="cert_expire_date">
-                                            <rank>90</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                                <item id="fieldset:Server:otherinfo">
-                                    <rank>30</rank>
-                                    <items>
-                                        <item id="material_list">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="description">
-                                            <rank>20</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                            </items>
-                        </item>
-                    </items>
-                </details>
-                <search>
-                    <items>
-                        <item id="name">
-                            <rank>10</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>20</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="status">
-                            <rank>30</rank>
-                        </item>
-                        <item id="business_criticity">
-                            <rank>40</rank>
-                        </item>
-                    -->
-                        <item id="location_id">
-                            <rank>50</rank>
-                        </item>
-                        <item id="customer_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="application_id">
-                            <rank>70</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="brand_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="model_id">
-                            <rank>70</rank>
-                        </item>
-                    -->
-                        <item id="device_id">
-                            <rank>80</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="serialnumber">
-                            <rank>90</rank>
-                        </item>
-                        <item id="asset_number">
-                            <rank>100</rank>
-                        </item>
-                    -->
-                        <!-- disable presentation
-                        <item id="move2production">
-                            <rank>110</rank>
-                        </item>
-                        <item id="purchase_date">
-                            <rank>120</rank>
-                        </item>
-                        <item id="end_of_warranty">
-                            <rank>130</rank>
-                        </item>
-                    -->
-                    </items>
-                </search>
-                <list>
-                    <items>
-                        <item id="org_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="system_landscape">
-                            <rank>20</rank>
-                        </item>
-                        <item id="location_id">
-                            <rank>30</rank>
-                        </item>
-                        <item id="customer_id">
-                            <rank>35</rank>
-                        </item>
-                        <item id="device_id">
-                            <rank>40</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="brand_id">
-                            <rank>40</rank>
-                        </item>
-                        <item id="model_id">
-                            <rank>50</rank>
-                        </item>
-                    -->
-                    </items>
-                </list>
-            </presentation>
-        </class>
-        <class id="IOTSensor" _delta="define">
-            <parent>PhysicalDevice</parent>
-            <properties>
-                <category>bizmodel,searchable</category>
-                <abstract>false</abstract>
-                <key_type>autoincrement</key_type>
-                <db_table>iotsensor</db_table>
-                <db_key_field>id</db_key_field>
-                <db_final_class_field />
-                <naming>
-                    <attributes>
-                        <attribute id="name" />
-                    </attributes>
-                </naming>
-                <icon>images/din1.png</icon>
-                <reconciliation>
-                    <attributes>
-                        <attribute id="name" />
-                        <attribute id="org_id" />
-                        <attribute id="organization_name" />
-                    </attributes>
-                </reconciliation>
-            </properties>
-            <fields>
-                <field id="collection" xsi:type="AttributeInteger">
-                    <sql>collection</sql>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="comment" _rename_from="description" xsi:type="AttributeText">
-                    <sql>comment</sql>
-                    <default_value />
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
-                    <sql>iotgateway_id</sql>
-                    <target_class>IOTGateway</target_class>
-                    <is_null_allowed>false</is_null_allowed>
-                    <on_target_delete>DEL_AUTO</on_target_delete>
-                </field>
-                <field id="iotgateway_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>iotgateway_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-            </fields>
-            <methods/>
-            <presentation>
-                <details>
-                    <items>
-                        <!-- disable presentation
-                        <item id="contacts_list">
-                            <rank>10</rank>
-                        </item>
-                        -->
-                        <item id="documents_list">
-                            <rank>20</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="applicationsolution_list">
-                            <rank>30</rank>
-                        </item>
-                        -->
-                        <item id="col:col1">
-                            <rank>80</rank>
-                            <items>
-                                <item id="fieldset:Server:baseinfo">
-                                    <rank>10</rank>
-                                    <items>
-                                        <item id="name">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="org_id">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="status">
-                                            <rank>30</rank>
-                                        </item>
-                                        <!-- disable presentation
-                                        <item id="business_criticity">
-                                            <rank>40</rank>
-                                        </item>
-                                    -->
-                                        <item id="location_id">
-                                            <rank>50</rank>
-                                        </item>
-                                        <item id="iotgateway_id">
-                                            <rank>60</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                                <item id="fieldset:Server:moreinfo">
-                                    <rank>20</rank>
-                                    <items>
-                                        <item id="brand_id">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="model_id">
-                                            <rank>30</rank>
-                                        </item>
-                                        <item id="serialnumber">
-                                            <rank>70</rank>
-                                        </item>
-                                        <item id="collection">
-                                            <rank>80</rank>
-                                        </item>
-                                        <!-- disable presentation
-                                        <item id="asset_number">
-                                            <rank>80</rank>
-                                        </item>
-                                    -->
-                                    </items>
-                                </item>
-                            </items>
-                        </item>
-                        <item id="col:col2">
-                            <rank>90</rank>
-                            <items>
-                                <!-- disable presentation
-                                <item id="fieldset:Server:Date">
-                                    <rank>10</rank>
-                                    <items>
-                                        <item id="move2production">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="purchase_date">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="end_of_warranty">
-                                            <rank>30</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                            -->
-                                <item id="fieldset:Server:otherinfo">
-                                    <rank>30</rank>
-                                    <items>
-                                        <item id="comment">
-                                            <rank>10</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                            </items>
-                        </item>
-                    </items>
-                </details>
-                <search>
-                    <items>
-                        <item id="name">
-                            <rank>10</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>20</rank>
-                        </item>
-                        <item id="status">
-                            <rank>30</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="business_criticity">
-                            <rank>40</rank>
-                        </item>
-                    -->
-                        <item id="location_id">
-                            <rank>50</rank>
-                        </item>
-                        <item id="iotgateway_id">
-                            <rank>55</rank>
-                        </item>
-                        <item id="brand_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="model_id">
-                            <rank>70</rank>
-                        </item>
-                        <item id="serialnumber">
-                            <rank>80</rank>
-                        </item>
-                        <item id="collection">
-                            <rank>90</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="asset_number">
-                            <rank>90</rank>
-                        </item>
-                        -->
-                        <!-- disable presentation
-                        <item id="move2production">
-                            <rank>120</rank>
-                        </item>
-                        <item id="purchase_date">
-                            <rank>130</rank>
-                        </item>
-                        <item id="end_of_warranty">
-                            <rank>140</rank>
-                        </item>
-                    -->
-                    </items>
-                </search>
-                <list>
-                    <items>
-                        <item id="org_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="status">
-                            <rank>20</rank>
-                        </item>
-                        <!-- disable presentation
-                        <item id="business_criticity">
-                            <rank>30</rank>
-                        </item>
-                    -->
-                        <item id="location_id">
-                            <rank>40</rank>
-                        </item>
-                        <item id="iotgateway_id">
-                            <rank>45</rank>
-                        </item>
-                        <item id="brand_id">
-                            <rank>50</rank>
-                        </item>
-                        <item id="model_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="serialnumber">
-                            <rank>70</rank>
-                        </item>
-                    </items>
-                </list>
-            </presentation>
-        </class>
-
-
-
-
-
-
-        <class id="IOTCable" _delta="define">
-            <parent>PhysicalDevice</parent>
-            <properties>
-                <category>bizmodel,searchable</category>
-                <abstract>false</abstract>
-                <key_type>autoincrement</key_type>
-                <db_table>iotcable</db_table>
-                <db_key_field>id</db_key_field>
-                <db_final_class_field />
-                <naming>
-                    <attributes>
-                        <attribute id="name" />
-                    </attributes>
-                </naming>
-                <icon>images/din1.png</icon>
-                <reconciliation>
-                    <attributes>
-                        <attribute id="name" />
-                        <attribute id="org_id" />
-                        <attribute id="organization_name" />
-                    </attributes>
-                </reconciliation>
-            </properties>
-            <fields>
-
-                <field id="iotgateway_id" xsi:type="AttributeExternalKey">
-                    <sql>iotgateway_id</sql>
-                    <target_class>IOTGateway</target_class>
-                    <is_null_allowed>false</is_null_allowed>
-                    <on_target_delete>DEL_AUTO</on_target_delete>
-                </field>
-                <field id="iotgateway_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>iotgateway_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-
-            </fields>
-            <methods/>
-            <presentation>
-                <details>
-                    <items>
-                        <item id="name">
-                            <rank>10</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>20</rank>
-                        </item>
-                        <item id="status">
-                            <rank>30</rank>
-                        </item>
-                        <item id="iotgateway_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="serialnumber">
-                            <rank>70</rank>
-                        </item>
-
-                    </items>
-                </details>
-                <search>
-                    <items>
-                        <item id="name">
-                            <rank>10</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>20</rank>
-                        </item>
-                        <item id="status">
-                            <rank>30</rank>
-                        </item>
-                        <item id="iotgateway_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="serialnumber">
-                            <rank>80</rank>
-                        </item>
-                    </items>
-                </search>
-                <list>
-                    <items>
-                        <item id="org_id">
-                            <rank>10</rank>
-                        </item>
-                        <item id="status">
-                            <rank>20</rank>
-                        </item>
-                        <item id="iotgateway_id">
-                            <rank>60</rank>
-                        </item>
-                        <item id="serialnumber">
-                            <rank>70</rank>
-                        </item>
-                    </items>
-                </list>
-            </presentation>
-        </class>
-
-
-
-
-
-
-
-        <class id="IOTCustomer" _delta="define">
-            <parent>cmdbAbstractObject</parent>
-            <properties>
-                <category>bizmodel,searchable,structure</category>
-                <abstract>false</abstract>
-                <key_type>autoincrement</key_type>
-                <db_table>iotcustomer</db_table>
-                <db_key_field>id</db_key_field>
-                <db_final_class_field/>
-                <naming>
-                    <attributes>
-                        <attribute id="name"/>
-                    </attributes>
-                </naming>
-                <icon>images/contact.png</icon>
-                <reconciliation>
-                    <attributes>
-                        <attribute id="name"/>
-                        <attribute id="org_id"/>
-                        <attribute id="org_name"/>
-                    </attributes>
-                </reconciliation>
-            </properties>
-            <fields>
-                <field id="name" xsi:type="AttributeString">
-                    <sql>name</sql>
-                    <default_value/>
-                    <is_null_allowed>false</is_null_allowed>
-                </field>
-                <field id="org_id" xsi:type="AttributeExternalKey">
-                    <sql>org_id</sql>
-                    <target_class>Organization</target_class>
-                    <is_null_allowed>false</is_null_allowed>
-                    <on_target_delete>DEL_MANUAL</on_target_delete>
-                </field>
-                <field id="org_name" xsi:type="AttributeExternalField">
-                    <extkey_attcode>org_id</extkey_attcode>
-                    <target_attcode>name</target_attcode>
-                </field>
-                <field id="country" xsi:type="AttributeString">
-                    <sql>country</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="address" xsi:type="AttributeString">
-                    <sql>address</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="contact" xsi:type="AttributeString">
-                    <sql>contact</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="iotgateway_list" xsi:type="AttributeLinkedSet">
-                    <linked_class>IOTGateway</linked_class>
-                    <ext_key_to_me>customer_id</ext_key_to_me>
-                    <edit_mode>actions</edit_mode>
-                    <count_min>0</count_min>
-                    <count_max>0</count_max>
-                    <duplicates />
-                </field>
-            </fields>
-            <methods/>
-            <presentation>
-                <details>
-                    <items>
-                        <item id="name">
-                            <rank>10</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>30</rank>
-                        </item>
-                        <item id="country">
-                            <rank>40</rank>
-                        </item>
-                        <item id="address">
-                            <rank>50</rank>
-                        </item>
-                        <item id="contact">
-                            <rank>60</rank>
-                        </item>
-                        <item id="iotgateway_list">
-                            <rank>100</rank>
-                        </item>
-                    </items>
-                </details>
-                <search>
-                    <items>
-                        <item id="name">
-                            <rank>10</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>30</rank>
-                        </item>
-                        <item id="country">
-                            <rank>40</rank>
-                        </item>
-                        <item id="address">
-                            <rank>50</rank>
-                        </item>
-                        <item id="contact">
-                            <rank>60</rank>
-                        </item>
-                    </items>
-                </search>
-                <default_search>
-                    <items>
-                        <item id="friendlyname">
-                            <rank>10</rank>
-                        </item>
-                        <item id="country">
-                            <rank>40</rank>
-                        </item>
-                        <item id="address">
-                            <rank>50</rank>
-                        </item>
-                        <item id="contact">
-                            <rank>60</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>70</rank>
-                        </item>
-                    </items>
-                </default_search>
-                <list>
-                    <items>
-                        <item id="org_id">
-                            <rank>30</rank>
-                        </item>
-                        <item id="country">
-                            <rank>40</rank>
-                        </item>
-                        <item id="address">
-                            <rank>50</rank>
-                        </item>
-                        <item id="contact">
-                            <rank>60</rank>
-                        </item>
-                    </items>
-                </list>
-            </presentation>
-        </class>
-        <class id="IOTSimCard" _delta="define">
-            <parent>PhysicalDevice</parent>
-            <properties>
-                <category>bizmodel,searchable,structure</category>
-                <abstract>false</abstract>
-                <key_type>autoincrement</key_type>
-                <db_table>iotsimcard</db_table>
-                <db_key_field>id</db_key_field>
-                <db_final_class_field/>
-                <icon>images/sim.png</icon>
-                <naming>
-                    <attributes>
-                        <attribute id="name"/>
-                    </attributes>
-                </naming>
-                <reconciliation>
-                    <attributes>
-                        <attribute id="name"/>
-                        <attribute id="org_id"/>
-                        <attribute id="organization_name"/>
-                    </attributes>
-                </reconciliation>
-                <order>
-                    <columns>
-                        <column id="name" ascending="true"/>
-                    </columns>
-                </order>
-                <uniqueness_rules>
-                    <rule id="sim">
-                        <attributes>
-                            <attribute id="org_id"/>
-                            <attribute id="sim"/>
-                        </attributes>
-                        <filter><![CDATA[sim != '']]></filter>
-                        <disabled>false</disabled>
-                        <is_blocking>true</is_blocking>
-                    </rule>
-                </uniqueness_rules>
-            </properties>
-            <fields>
-                <field id="iotgateways_list" xsi:type="AttributeLinkedSet">
-                    <linked_class>IOTGateway</linked_class>
-                    <ext_key_to_me>simcard_id</ext_key_to_me>
-                    <edit_mode>in_place</edit_mode>
-                    <count_min>0</count_min>
-                    <count_max>0</count_max>
-                    <duplicates />
-                </field>
-                <field id="sim" xsi:type="AttributeString">
-                    <sql>sim</sql>
-                    <is_null_allowed>false</is_null_allowed>
-                    <default_value/>
-                </field>
-                <field id="phone_number" xsi:type="AttributePhoneNumber">
-                    <sql>phone_number</sql>
-                    <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
-                </field>
-                <field id="pin" xsi:type="AttributeString">
-                    <sql>pin</sql>
-                    <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
-                </field>
-                <field id="puk" xsi:type="AttributeString">
-                    <sql>puk</sql>
-                    <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
-                </field>
-                <!--
-Contract Starts as Date
-Contract Ends as Date
-Termination Till as Date
-Extended Till as Date
-Notice Giving By as Date
-				-->
-                <field id="contract_start_date" xsi:type="AttributeDate">
-                    <sql>contract_start_date</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="contract_end_date" xsi:type="AttributeDate">
-                    <sql>contract_end_date</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="termination_till_date" xsi:type="AttributeDate">
-                    <sql>termination_till_date</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="extended_till_date" xsi:type="AttributeDate">
-                    <sql>extended_till_date</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-                <field id="notice_by_date" xsi:type="AttributeDate">
-                    <sql>notice_by_date</sql>
-                    <default_value/>
-                    <is_null_allowed>true</is_null_allowed>
-                </field>
-            </fields>
-            <methods/>
-            <presentation>
-                <details>
-                    <items>
-                        <item id="contacts_list">
-                            <rank>10</rank>
-                        </item>
-                        <item id="documents_list">
-                            <rank>20</rank>
-                        </item>
-                        <item id="iotgateways_list">
-                            <rank>25</rank>
-                        </item>
-                        <item id="providercontracts_list">
-                            <rank>30</rank>
-                        </item>
-                        <item id="col:col1">
-                            <rank>100</rank>
-                            <items>
-                                <item id="fieldset:IOTSimCard:info">
-                                    <rank>1</rank>
-                                    <items>
-                                        <item id="name">
-                                            <rank>1</rank>
-                                        </item>
-                                        <item id="org_id">
-                                            <rank>2</rank>
-                                        </item>
-                                        <item id="status">
-                                            <rank>31</rank>
-                                        </item>
-                                        <item id="location_id">
-                                            <rank>32</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                                <item id="fieldset:IOTSimCard:numbers">
-                                    <rank>20</rank>
-                                    <items>
-                                        <item id="phone_number">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="sim">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="pin">
-                                            <rank>30</rank>
-                                        </item>
-                                        <item id="puk">
-                                            <rank>40</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                            </items>
-                        </item>
-                        <item id="col:col2">
-                            <rank>110</rank>
-                            <items>
-                                <item id="fieldset:IOTSimCard:date">
-                                    <rank>10</rank>
-                                    <items>
-                                        <item id="contract_start_date">
-                                            <rank>10</rank>
-                                        </item>
-                                        <item id="contract_end_date">
-                                            <rank>20</rank>
-                                        </item>
-                                        <item id="termination_till_date">
-                                            <rank>30</rank>
-                                        </item>
-                                        <item id="extended_till_date">
-                                            <rank>40</rank>
-                                        </item>
-                                        <item id="notice_by_date">
-                                            <rank>50</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                                <item id="fieldset:Server:otherinfo">
-                                    <rank>30</rank>
-                                    <items>
-                                        <item id="description">
-                                            <rank>10</rank>
-                                        </item>
-                                    </items>
-                                </item>
-                            </items>
-                        </item>
-                    </items>
-                </details>
-                <search>
-                    <items>
-                        <item id="name">
-                            <rank>1</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>2</rank>
-                        </item>
-                        <item id="sim">
-                            <rank>3</rank>
-                        </item>
-                        <item id="phone_number">
-                            <rank>4</rank>
-                        </item>
-                        <item id="status">
-                            <rank>31</rank>
-                        </item>
-                        <item id="location_id">
-                            <rank>32</rank>
-                        </item>
-                    </items>
-                </search>
-                <default_search>
-                    <items>
-                        <item id="name">
-                            <rank>1</rank>
-                        </item>
-                        <item id="org_id">
-                            <rank>2</rank>
-                        </item>
-                        <item id="sim">
-                            <rank>3</rank>
-                        </item>
-                        <item id="phone_number">
-                            <rank>4</rank>
-                        </item>
-                        <item id="status">
-                            <rank>31</rank>
-                        </item>
-                        <item id="location_id">
-                            <rank>32</rank>
-                        </item>
-                    </items>
-                </default_search>
-                <list>
-                    <items>
-                        <item id="org_id">
-                            <rank>2</rank>
-                        </item>
-                        <item id="sim">
-                            <rank>3</rank>
-                        </item>
-                        <item id="phone_number">
-                            <rank>4</rank>
-                        </item>
-                        <item id="status">
-                            <rank>31</rank>
-                        </item>
-                        <item id="location_id">
-                            <rank>32</rank>
-                        </item>
-                        <item id="description">
-                            <rank>33</rank>
-                        </item>
-                    </items>
-                </list>
-            </presentation>
-        </class>
         <class id="Model" _delta="must_exist">
             <fields>
                 <field id="type" xsi:type="AttributeEnum" _delta="must_exist">
@@ -1393,6 +1253,7 @@ Notice Giving By as Date
             </fields>
         </class>
     </classes>
+    <!-- ***************** Menus ***************** -->
     <menus>
         <menu id="IOTManagement" xsi:type="MenuGroup" _delta="define">
             <rank>29</rank>
@@ -1473,7 +1334,7 @@ Notice Giving By as Date
         <menu id="IOTCustomer" xsi:type="OQLMenuNode" _delta="define">
             <rank>10</rank>
             <parent>IOTShortCut</parent>
-            <oql>SELECT IOTGateway</oql>
+            <oql>SELECT IOTCustomer</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>

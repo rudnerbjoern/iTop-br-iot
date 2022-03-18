@@ -81,6 +81,8 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTGateway/Attribute:vpnd/Value:yes+' => '',
     'Class:IOTGateway/Attribute:iotsensors_list' => 'Sensors',
     'Class:IOTGateway/Attribute:iotsensors_list+' => '',
+    'Class:IOTGateway/Attribute:iotcables_list' => 'Cables',
+    'Class:IOTGateway/Attribute:iotcables_list+' => '',
     'IOTGateway:Certificate' => 'Certificate',
 ));
 
@@ -96,6 +98,18 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTSensor/Attribute:collection+' => '',
     'Class:IOTSensor/Attribute:comment' => 'Comment',
     'Class:IOTSensor/Attribute:comment+' => '',
+    'Class:IOTSensor/Attribute:iotgateway_id' => 'Gateway',
+    'Class:IOTSensor/Attribute:iotgateway_id+' => '',
+));
+
+//
+// Class: IOTCable
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:IOTCable' => 'IoT Cable',
+    'Class:IOTCable+' => '',
+    'Class:IOTCable/Attribute:iotgateway_id' => 'Gateway',
+    'Class:IOTCable/Attribute:iotgateway_id+' => '',
 ));
 
 //
