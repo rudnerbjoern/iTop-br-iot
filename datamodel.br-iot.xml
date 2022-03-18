@@ -924,7 +924,7 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
-                <icon>images/patch.png</icon>
+                <icon>images/patchcable.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
