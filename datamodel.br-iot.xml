@@ -217,6 +217,7 @@
                     <is_null_allowed>true</is_null_allowed>
                     <on_target_delete>DEL_MANUAL</on_target_delete>
                     <allow_target_creation>true</allow_target_creation>
+                    <filter>SELECT IOTSimCard WHERE id NOT IN (SELECT IOTSimCard AS S JOIN IOTGateway AS G ON G.simcard_id = S.id)</filter>
                 </field>
                 <field id="simcard_name" xsi:type="AttributeExternalField">
                     <extkey_attcode>simcard_id</extkey_attcode>
@@ -1293,11 +1294,11 @@
                             </dashlet>
                             <dashlet id="iot-113" xsi:type="DashletBadge">
                                 <rank>113</rank>
-                                <class>IOTSimCard</class>
+                                <class>IOTCable</class>
                             </dashlet>
                             <dashlet id="iot-114" xsi:type="DashletBadge">
                                 <rank>114</rank>
-                                <class>IOTCable</class>
+                                <class>IOTSimCard</class>
                             </dashlet>
                         </dashlets>
                     </cell>
@@ -1352,17 +1353,17 @@
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
-        <menu id="IOTSimCard" xsi:type="OQLMenuNode" _delta="define">
+        <menu id="IOTCable" xsi:type="OQLMenuNode" _delta="define">
             <rank>40</rank>
             <parent>IOTShortCut</parent>
-            <oql>SELECT IOTSimCard</oql>
+            <oql>SELECT IOTCable</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
-        <menu id="IOTCable" xsi:type="OQLMenuNode" _delta="define">
+        <menu id="IOTSimCard" xsi:type="OQLMenuNode" _delta="define">
             <rank>50</rank>
             <parent>IOTShortCut</parent>
-            <oql>SELECT IOTCable</oql>
+            <oql>SELECT IOTSimCard</oql>
             <do_search>1</do_search>
             <auto_reload>fast</auto_reload>
         </menu>
