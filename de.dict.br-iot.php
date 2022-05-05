@@ -61,6 +61,8 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway/Attribute:material_list+' => '',
     'Class:IOTGateway/Attribute:simcard_id' => 'SIM Karte',
     'Class:IOTGateway/Attribute:simcard_id+' => '',
+    'Class:IOTGateway/Attribute:apn' => 'APN',
+    'Class:IOTGateway/Attribute:apn+' => 'Access Point Name',
     'Class:IOTGateway/Attribute:programversion_id' => 'Programm Version',
     'Class:IOTGateway/Attribute:programversion_id+' => '',
     'Class:IOTGateway/Attribute:firmwareversion_id' => 'Firmware Version',

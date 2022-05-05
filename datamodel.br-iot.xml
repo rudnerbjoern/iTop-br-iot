@@ -223,6 +223,11 @@
                     <extkey_attcode>simcard_id</extkey_attcode>
                     <target_attcode>name</target_attcode>
                 </field>
+                <field id="apn" xsi:type="AttributeString">
+                    <sql>apn</sql>
+                    <is_null_allowed>true</is_null_allowed>
+                    <default_value/>
+                </field>
                 <field id="programversion_id" xsi:type="AttributeExternalKey">
                     <sql>programversion_id</sql>
                     <target_class>IOTProgramVersion</target_class>
@@ -381,25 +386,28 @@
                                             <rank>30</rank>
                                         </item>
                                         <item id="simcard_id">
-                                            <rank>35</rank>
-                                        </item>
-                                        <item id="application_id">
                                             <rank>40</rank>
                                         </item>
-                                        <item id="programversion_id">
+                                        <item id="apn">
                                             <rank>50</rank>
                                         </item>
-                                        <item id="firmwareversion_id">
+                                        <item id="application_id">
                                             <rank>60</rank>
                                         </item>
-                                        <item id="remote_access">
+                                        <item id="programversion_id">
                                             <rank>70</rank>
                                         </item>
-                                        <item id="vpnd">
+                                        <item id="firmwareversion_id">
                                             <rank>80</rank>
                                         </item>
-                                        <item id="serialnumber">
+                                        <item id="remote_access">
                                             <rank>90</rank>
+                                        </item>
+                                        <item id="vpnd">
+                                            <rank>100</rank>
+                                        </item>
+                                        <item id="serialnumber">
+                                            <rank>110</rank>
                                         </item>
                                     </items>
                                 </item>
@@ -499,12 +507,11 @@
                 <icon>images/sim.png</icon>
                 <naming>
                     <attributes>
-                        <attribute id="name"/>
+                        <attribute id="sim"/>
                     </attributes>
                 </naming>
                 <reconciliation>
                     <attributes>
-                        <attribute id="name"/>
                         <attribute id="sim"/>
                         <attribute id="org_id"/>
                         <attribute id="organization_name"/>
@@ -512,16 +519,16 @@
                 </reconciliation>
                 <order>
                     <columns>
-                        <column id="name" ascending="true"/>
+                        <column id="sim" ascending="true"/>
                     </columns>
                 </order>
                 <uniqueness_rules>
-                    <rule id="sim">
+                    <rule id="sim" _delta="define">
                         <attributes>
                             <attribute id="org_id"/>
                             <attribute id="sim"/>
                         </attributes>
-                        <filter><![CDATA[sim != '']]></filter>
+                        <filter/>
                         <disabled>false</disabled>
                         <is_blocking>true</is_blocking>
                     </rule>
@@ -538,7 +545,7 @@
                 <field id="sim" xsi:type="AttributeString">
                     <sql>sim</sql>
                     <is_null_allowed>false</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="phone_number" xsi:type="AttributePhoneNumber">
                     <sql>phone_number</sql>
@@ -581,7 +588,71 @@
                     <default_value/>
                 </field>
             </fields>
-            <methods/>
+            <methods>
+                <method id="GetAttributeFlags" _delta="define">
+                    <static>false</static>
+                    <access>public</access>
+                    <type>Overload-DBObject</type>
+                    <code>
+                        <![CDATA[public function GetAttributeFlags($sAttCode, &$aReasons = array(), $sTargetState = '')
+					    {
+						    // Force the computed field to be read-only, preventing it to be written
+						    if (($sAttCode == 'name'))
+							    return(OPT_ATT_READONLY | parent::GetAttributeFlags($sAttCode, $aReasons, $sTargetState));
+						    return parent::GetAttributeFlags($sAttCode, $aReasons, $sTargetState);
+					    }]]>
+                    </code>
+                </method>
+                <method id="GetInitialStateAttributeFlags" _delta="define">
+                    <static>false</static>
+                    <access>public</access>
+                    <type>Overload-DBObject</type>
+                    <code>
+                        <![CDATA[public function GetInitialStateAttributeFlags($sAttCode, &$aReasons = array())
+					    {
+						    // Hide the calculated field in object creation form
+						    if (($sAttCode == 'name'))
+							    return(OPT_ATT_HIDDEN | parent::GetInitialStateAttributeFlags($sAttCode, $aReasons));
+						    return parent::GetInitialStateAttributeFlags($sAttCode, $aReasons);
+					    }]]>
+                    </code>
+                </method>
+                <method id="OnInsert" _delta="define">
+                    <static>false</static>
+                    <access>public</access>
+                    <type>Overload-DBObject</type>
+                    <code>
+                        <![CDATA[public function OnInsert()
+					    {
+						    $this->SetName();
+					    }]]>
+                    </code>
+                </method>
+                <method id="OnUpdate" _delta="define">
+                    <static>false</static>
+                    <access>public</access>
+                    <type>Overload-DBObject</type>
+                    <code>
+                        <![CDATA[public function OnUpdate()
+					    {
+						    $this->SetName();
+					    }]]>
+                    </code>
+                </method>
+                <method id="SetName" _delta="define">
+                    <static>false</static>
+                    <access>public</access>
+                    <type>Overload-DBObject</type>
+                    <code>
+                        <![CDATA[public function SetName()
+					    {
+                            // read the new value of the SIM
+                            $sSim = $this->Get('sim');
+                            $this->Set('name', $sSim);
+					    }]]>
+                    </code>
+                </method>
+            </methods>
             <presentation>
                 <details>
                     <items>
@@ -603,7 +674,7 @@
                                 <item id="fieldset:IOTSimCard:info">
                                     <rank>1</rank>
                                     <items>
-                                        <item id="name">
+                                        <item id="sim">
                                             <rank>1</rank>
                                         </item>
                                         <item id="org_id">
@@ -622,9 +693,6 @@
                                     <items>
                                         <item id="phone_number">
                                             <rank>10</rank>
-                                        </item>
-                                        <item id="sim">
-                                            <rank>20</rank>
                                         </item>
                                         <item id="pin">
                                             <rank>30</rank>
@@ -673,14 +741,11 @@
                 </details>
                 <search>
                     <items>
-                        <item id="name">
+                        <item id="sim">
                             <rank>1</rank>
                         </item>
                         <item id="org_id">
                             <rank>2</rank>
-                        </item>
-                        <item id="sim">
-                            <rank>3</rank>
                         </item>
                         <item id="phone_number">
                             <rank>4</rank>
@@ -695,14 +760,11 @@
                 </search>
                 <default_search>
                     <items>
-                        <item id="name">
+                        <item id="sim">
                             <rank>1</rank>
                         </item>
                         <item id="org_id">
                             <rank>2</rank>
-                        </item>
-                        <item id="sim">
-                            <rank>3</rank>
                         </item>
                         <item id="phone_number">
                             <rank>4</rank>
