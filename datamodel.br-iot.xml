@@ -1468,9 +1468,29 @@
             </group>
         </groups>
         <profiles>
+            <profile id="122442" _delta="define">
+                <name>IoT User</name>
+                <description>Person dealing with IoT devices</description>
+                <groups>
+                    <group id="IOT">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="*">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                        </actions>
+                    </group>
+                </groups>
+            </profile>
             <profile id="122443" _delta="define">
                 <name>IoT Manager</name>
-                <description>Person dealing with IoT devices</description>
+                <description>Person dealing with IoT devices - Admin Level</description>
                 <groups>
                     <group id="IOT">
                         <actions>
@@ -1479,6 +1499,7 @@
                             <action id="action:write">allow</action>
                             <action id="action:bulk write">allow</action>
                             <action id="action:delete">allow</action>
+                            <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
                     <group id="*">
