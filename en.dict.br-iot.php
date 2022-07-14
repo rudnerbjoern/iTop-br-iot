@@ -3,7 +3,7 @@
 /**
  * @copyright   Copyright (C) 2021 Björn Rudner
  * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
- * @version     2022-03-07
+ * @version     2022-07-14
  *
  * Localized data
  */
@@ -69,6 +69,8 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTGateway/Attribute:firmwareversion_id+' => '',
     'Class:IOTGateway/Attribute:application_id' => 'Application',
     'Class:IOTGateway/Attribute:application_id+' => '',
+    'Class:IOTGateway/Attribute:plctype_id' => 'PLC Type',
+    'Class:IOTGateway/Attribute:plctype_id+' => '',
     'Class:IOTGateway/Attribute:remote_access' => 'Remote Access',
     'Class:IOTGateway/Attribute:remote_access+' => '',
     'Class:IOTGateway/Attribute:remote_access/Value:no' => 'No',
@@ -148,6 +150,18 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTApplication/Attribute:description+' => '',
     'Class:IOTApplication/Attribute:iotgateway_list' => 'IoT Gateways',
     'Class:IOTApplication/Attribute:iotgateway_list+' => '',
+));
+
+//
+// Class: IOTPlcType
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:IOTPlcType' => 'IoT PLC Type',
+    'Class:IOTPlcType+' => '',
+    'Class:IOTPlcType/Attribute:description' => 'Description',
+    'Class:IOTPlcType/Attribute:description+' => '',
+    'Class:IOTPlcType/Attribute:iotgateway_list' => 'IoT Gateways',
+    'Class:IOTPlcType/Attribute:iotgateway_list+' => '',
 ));
 
 //

@@ -266,6 +266,16 @@
                     <extkey_attcode>application_id</extkey_attcode>
                     <target_attcode>name</target_attcode>
                 </field>
+                <field id="plctype_id" xsi:type="AttributeExternalKey">
+                    <sql>plctype_id</sql>
+                    <target_class>IOTPlcType</target_class>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_MANUAL</on_target_delete>
+                </field>
+                <field id="plctype_name" xsi:type="AttributeExternalField">
+                    <extkey_attcode>plctype_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
                 <field id="remote_access" xsi:type="AttributeEnum">
                     <values>
                         <value id="yes">
@@ -390,6 +400,9 @@
                                 <item id="fieldset:Server:moreinfo">
                                     <rank>30</rank>
                                     <items>
+                                        <item id="plctype_id">
+                                            <rank>20</rank>
+                                        </item>
                                         <item id="device_id">
                                             <rank>30</rank>
                                         </item>
@@ -476,14 +489,17 @@
                         <item id="customer_id">
                             <rank>60</rank>
                         </item>
-                        <item id="application_id">
+                        <item id="plctype_id">
                             <rank>70</rank>
                         </item>
-                        <item id="device_id">
+                        <item id="application_id">
                             <rank>80</rank>
                         </item>
-                        <item id="serialnumber">
+                        <item id="device_id">
                             <rank>90</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>100</rank>
                         </item>
                     </items>
                 </search>
@@ -499,10 +515,16 @@
                             <rank>30</rank>
                         </item>
                         <item id="customer_id">
-                            <rank>35</rank>
+                            <rank>40</rank>
+                        </item>
+                        <item id="plctype_id">
+                            <rank>50</rank>
+                        </item>
+                        <item id="application_id">
+                            <rank>60</rank>
                         </item>
                         <item id="device_id">
-                            <rank>40</rank>
+                            <rank>70</rank>
                         </item>
                     </items>
                 </list>
@@ -1319,6 +1341,86 @@
                 </list>
             </presentation>
         </class>
+        <class id="IOTPlcType" _delta="define">
+            <parent>Typology</parent>
+            <properties>
+                <category>bizmodel,searchable,configmgmt</category>
+                <abstract>false</abstract>
+                <key_type>autoincrement</key_type>
+                <db_table>iotplctype</db_table>
+                <db_key_field>id</db_key_field>
+                <db_final_class_field />
+                <naming>
+                    <attributes>
+                        <attribute id="name" />
+                    </attributes>
+                </naming>
+                <display_template />
+                <reconciliation>
+                    <attributes>
+                        <attribute id="name" />
+                    </attributes>
+                </reconciliation>
+                <uniqueness_rules>
+                    <rule id="name">
+                        <attributes>
+                            <attribute id="name" />
+                        </attributes>
+                        <filter />
+                        <disabled>false</disabled>
+                        <is_blocking>true</is_blocking>
+                    </rule>
+                </uniqueness_rules>
+            </properties>
+            <fields>
+                <field id="description" xsi:type="AttributeText">
+                    <sql>description</sql>
+                    <default_value />
+                    <is_null_allowed>true</is_null_allowed>
+                </field>
+                <field id="iotgateway_list" xsi:type="AttributeLinkedSet">
+                    <linked_class>IOTGateway</linked_class>
+                    <ext_key_to_me>plctype_id</ext_key_to_me>
+                    <edit_mode>add_only</edit_mode>
+                    <count_min>0</count_min>
+                    <count_max>0</count_max>
+                    <duplicates />
+                </field>
+            </fields>
+            <methods />
+            <presentation>
+                <details>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="description">
+                            <rank>20</rank>
+                        </item>
+                        <item id="iotgateway_list">
+                            <rank>100</rank>
+                        </item>
+                    </items>
+                </details>
+                <search>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="description">
+                            <rank>20</rank>
+                        </item>
+                    </items>
+                </search>
+                <list>
+                    <items>
+                        <item id="description">
+                            <rank>20</rank>
+                        </item>
+                    </items>
+                </list>
+            </presentation>
+        </class>
         <class id="Model" _delta="must_exist">
             <fields>
                 <field id="type" xsi:type="AttributeEnum" _delta="must_exist">
@@ -1387,15 +1489,19 @@
                                 <icon>iTop-br-iot/images/iot-sensor.png</icon>
                             </dashlet>
                             <dashlet id="iot-311" xsi:type="DashletBadge">
-                                <rank>2</rank>
-                                <class>IOTApplication</class>
+                                <rank>11</rank>
+                                <class>IOTPlcType</class>
                             </dashlet>
                             <dashlet id="iot-312" xsi:type="DashletBadge">
-                                <rank>3</rank>
-                                <class>IOTProgramVersion</class>
+                                <rank>12</rank>
+                                <class>IOTApplication</class>
                             </dashlet>
                             <dashlet id="iot-313" xsi:type="DashletBadge">
-                                <rank>4</rank>
+                                <rank>13</rank>
+                                <class>IOTProgramVersion</class>
+                            </dashlet>
+                            <dashlet id="iot-314" xsi:type="DashletBadge">
+                                <rank>14</rank>
                                 <class>IOTFirmwareVersion</class>
                             </dashlet>
                         </dashlets>
@@ -1448,16 +1554,20 @@
                 <cells>
                     <cell id="0">
                         <dashlets>
-                            <dashlet id="iot-programversion" xsi:type="DashletBadge" _delta="define">
+                            <dashlet id="iot-plctype" xsi:type="DashletBadge" _delta="define">
                                 <rank>33.1</rank>
+                                <class>IOTPlcType</class>
+                            </dashlet>
+                            <dashlet id="iot-programversion" xsi:type="DashletBadge" _delta="define">
+                                <rank>33.2</rank>
                                 <class>IOTProgramVersion</class>
                             </dashlet>
                             <dashlet id="iot-firmwareversion" xsi:type="DashletBadge" _delta="define">
-                                <rank>33.2</rank>
+                                <rank>33.3</rank>
                                 <class>IOTFirmwareVersion</class>
                             </dashlet>
                             <dashlet id="iot-application" xsi:type="DashletBadge" _delta="define">
-                                <rank>33.3</rank>
+                                <rank>33.4</rank>
                                 <class>IOTApplication</class>
                             </dashlet>
                         </dashlets>
@@ -1475,9 +1585,19 @@
                     <class id="IOTSensor"/>
                     <class id="IOTSimCard"/>
                     <class id="IOTCable"/>
+                </classes>
+            </group>
+            <group id="IOTTypology" _delta="define">
+                <classes>
                     <class id="IOTProgramVersion"/>
                     <class id="IOTFirmwareVersion"/>
                     <class id="IOTApplication"/>
+                    <class id="IOTPlcType"/>
+                </classes>
+            </group>
+            <group id="IOTLocation" _delta="define">
+                <classes>
+                    <class id="Location"/>
                 </classes>
             </group>
         </groups>
@@ -1487,6 +1607,20 @@
                 <description>Person dealing with IoT devices</description>
                 <groups>
                     <group id="IOT">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTTypology">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTLocation">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1514,6 +1648,25 @@
                             <action id="action:bulk write">allow</action>
                             <action id="action:delete">allow</action>
                             <action id="action:bulk delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTTypology">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:bulk write">allow</action>
+                            <action id="action:delete">allow</action>
+                            <action id="action:bulk delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTLocation">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:bulk write">allow</action>
+                            <action id="action:delete">allow</action>
                         </actions>
                     </group>
                     <group id="*">

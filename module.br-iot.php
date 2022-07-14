@@ -3,14 +3,14 @@
 /**
  * @copyright   Copyright (C) 2021 Björn Rudner
  * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
- * @version     2022-05-23
+ * @version     2022-07-14
  *
  * iTop module definition file
  */
 
 SetupWebPage::AddModule(
     __FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-    'br-iot/0.7.1',
+    'br-iot/0.8.0',
     array(
         // Identification
         //
