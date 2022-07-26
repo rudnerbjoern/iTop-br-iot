@@ -1600,6 +1600,22 @@
                     <class id="Location"/>
                 </classes>
             </group>
+            <group id="IOTContact" _delta="define">
+                <classes>
+                    <class id="Contact"/>
+                </classes>
+            </group>
+            <group id="IOTContactLinks" _delta="define">
+                <classes>
+                    <class id="lnkContactToFunctionalCI"/>
+                </classes>
+            </group>
+            <group id="IOTDocumentAndLinks" _delta="define">
+                <classes>
+                    <class id="Document"/>
+                    <class id="lnkDocumentToFunctionalCI"/>
+                </classes>
+            </group>
         </groups>
         <profiles>
             <profile id="122442" _delta="define">
@@ -1621,6 +1637,30 @@
                         </actions>
                     </group>
                     <group id="IOTLocation">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTContact">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTContactLinks">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:bulk write">allow</action>
+                            <action id="action:delete">allow</action>
+                            <action id="action:bulk delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTDocumentAndLinks">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1667,6 +1707,36 @@
                             <action id="action:write">allow</action>
                             <action id="action:bulk write">allow</action>
                             <action id="action:delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTContact">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:bulk write">allow</action>
+                            <action id="action:delete">allow</action>
+                            <action id="action:bulk delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTContactLinks">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:bulk write">allow</action>
+                            <action id="action:delete">allow</action>
+                            <action id="action:bulk delete">allow</action>
+                        </actions>
+                    </group>
+                    <group id="IOTDocumentAndLinks">
+                        <actions>
+                            <action id="action:read">allow</action>
+                            <action id="action:bulk read">allow</action>
+                            <action id="action:write">allow</action>
+                            <action id="action:bulk write">allow</action>
+                            <action id="action:delete">allow</action>
+                            <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
                     <group id="*">
