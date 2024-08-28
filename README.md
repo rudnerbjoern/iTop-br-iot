@@ -1,6 +1,6 @@
 # iTop-br-iot
 
-Copyright (c) 2022 Björn Rudner
+Copyright (c) 2022-2024 Björn Rudner
 [![License](https://img.shields.io/github/license/rudnerbjoern/iTop-br-landscape)](https://github.com/rudnerbjoern/iTop-br-landscape/blob/main/LICENSE)
 
 ## What?
@@ -46,8 +46,8 @@ TBD
 
 ## iTop Compatibility
 
-The extension was tested on iTop 2.7.11
+The extension was tested on iTop 2.7.11 and 3.1.1
 
 ## Attribution
 
-https://handbook.enapter.com/icons.html
+<https://handbook.enapter.com/icons.html>
