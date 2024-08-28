@@ -154,6 +154,25 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTGateway ***************** -->
@@ -544,6 +563,19 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="plctype_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="device_id">
+                            <rank>30</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTSimCard ***************** -->
@@ -860,6 +892,16 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="sim">
+                            <rank>3</rank>
+                        </item>
+                        <item id="phone_number">
+                            <rank>4</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTSensor ***************** -->
@@ -1041,6 +1083,22 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="brand_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>70</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                        <item id="collection">
+                            <rank>90</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTCable ***************** -->
@@ -1142,6 +1200,16 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** Typology ***************** -->
