@@ -19,6 +19,10 @@
                     <attributes>
                         <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="country" />
+                        <attribute id="contact" />
+                    </complementary_attributes>
                 </naming>
                 <style>
                     <icon>images/contact.png</icon>
@@ -166,6 +170,9 @@
                     <attributes>
                         <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="plctype_name" />
+                    </complementary_attributes>
                 </naming>
                 <fields_semantic>
                     <state_attribute>status</state_attribute>
@@ -553,6 +560,9 @@
                     <attributes>
                         <attribute id="sim" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="phone_number" />
+                    </complementary_attributes>
                 </naming>
                 <fields_semantic>
                     <state_attribute>status</state_attribute>
@@ -866,6 +876,10 @@
                     <attributes>
                         <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="brand_name" />
+                        <attribute id="model_name" />
+                    </complementary_attributes>
                 </naming>
                 <fields_semantic>
                     <state_attribute>status</state_attribute>
@@ -1043,6 +1057,9 @@
                     <attributes>
                         <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="serialnumber" />
+                    </complementary_attributes>
                 </naming>
                 <fields_semantic>
                     <state_attribute>status</state_attribute>
