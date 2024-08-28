@@ -3,7 +3,6 @@
 Copyright (c) 2022 Björn Rudner
 [![License](https://img.shields.io/github/license/rudnerbjoern/iTop-br-landscape)](https://github.com/rudnerbjoern/iTop-br-landscape/blob/main/LICENSE)
 
-
 ## What?
 
 iTop extension to add IoT CIs
@@ -45,7 +44,10 @@ iTop extension to add IoT CIs
 
 TBD
 
+## iTop Compatibility
 
-## Images
+The extension was tested on iTop 2.7.11
+
+## Attribution
 
 https://handbook.enapter.com/icons.html
