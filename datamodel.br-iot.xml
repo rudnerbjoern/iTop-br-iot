@@ -20,6 +20,9 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
+                <style>
+                    <icon>images/contact.png</icon>
+                </style>
                 <icon>images/contact.png</icon>
                 <reconciliation>
                     <attributes>
@@ -159,12 +162,18 @@
                 <db_table>iotgateway</db_table>
                 <db_key_field>id</db_key_field>
                 <db_final_class_field />
-                <icon>images/plc.png</icon>
                 <naming>
                     <attributes>
                         <attribute id="name" />
                     </attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/plc.svg</icon>
+                </style>
+                <icon>images/plc.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -540,12 +549,18 @@
                 <db_table>iotsimcard</db_table>
                 <db_key_field>id</db_key_field>
                 <db_final_class_field />
-                <icon>images/sim.png</icon>
                 <naming>
                     <attributes>
                         <attribute id="sim" />
                     </attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/sim_256.png</icon>
+                </style>
+                <icon>images/sim.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="sim" />
@@ -852,6 +867,12 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/din1.svg</icon>
+                </style>
                 <icon>images/din1.png</icon>
                 <reconciliation>
                     <attributes>
@@ -1023,6 +1044,12 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/patchcable.png</icon>
+                </style>
                 <icon>images/patchcable.png</icon>
                 <reconciliation>
                     <attributes>
@@ -1440,7 +1467,7 @@
             <enable_admin_only _delta="define">0</enable_admin_only>
             <enable_action _delta="define">UR_ACTION_MODIFY</enable_action>
             <style>
-                <decoration_classes>fas fa-sensor-cloud</decoration_classes>
+                <decoration_classes>fas fa-microchip</decoration_classes>
             </style>
         </menu>
         <menu id="IOTSpace" xsi:type="DashboardMenuNode" _delta="define">
