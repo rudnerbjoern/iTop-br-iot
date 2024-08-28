@@ -20,7 +20,7 @@ SetupWebPage::AddModule(
         // Setup
         //
         'dependencies' => array(
-            'itop-config-mgmt/2.4.0',
+            '(itop-config-mgmt/2.5.0 & itop-config-mgmt/<3.0.0)||itop-structure/3.0.0',
             'br-landscape/0.2.0',
         ),
         'mandatory' => false,
