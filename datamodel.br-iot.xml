@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.7">
     <!--
-    * @copyright   Copyright (C) 2022 Björn Rudner
+    * @copyright   Copyright (C) 2022-2024 Björn Rudner
     * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
     -->
     <classes>
@@ -14,25 +14,32 @@
                 <key_type>autoincrement</key_type>
                 <db_table>iotcustomer</db_table>
                 <db_key_field>id</db_key_field>
-                <db_final_class_field/>
+                <db_final_class_field />
                 <naming>
                     <attributes>
-                        <attribute id="name"/>
+                        <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="country" />
+                        <attribute id="contact" />
+                    </complementary_attributes>
                 </naming>
+                <style>
+                    <icon>images/contact.png</icon>
+                </style>
                 <icon>images/contact.png</icon>
                 <reconciliation>
                     <attributes>
-                        <attribute id="name"/>
-                        <attribute id="org_id"/>
-                        <attribute id="org_name"/>
+                        <attribute id="name" />
+                        <attribute id="org_id" />
+                        <attribute id="org_name" />
                     </attributes>
                 </reconciliation>
             </properties>
             <fields>
                 <field id="name" xsi:type="AttributeString">
                     <sql>name</sql>
-                    <default_value/>
+                    <default_value />
                     <is_null_allowed>false</is_null_allowed>
                 </field>
                 <field id="org_id" xsi:type="AttributeExternalKey">
@@ -47,17 +54,17 @@
                 </field>
                 <field id="country" xsi:type="AttributeString">
                     <sql>country</sql>
-                    <default_value/>
+                    <default_value />
                     <is_null_allowed>true</is_null_allowed>
                 </field>
                 <field id="address" xsi:type="AttributeString">
                     <sql>address</sql>
-                    <default_value/>
+                    <default_value />
                     <is_null_allowed>true</is_null_allowed>
                 </field>
                 <field id="contact" xsi:type="AttributeString">
                     <sql>contact</sql>
-                    <default_value/>
+                    <default_value />
                     <is_null_allowed>true</is_null_allowed>
                 </field>
                 <field id="iotgateway_list" xsi:type="AttributeLinkedSet">
@@ -69,7 +76,7 @@
                     <duplicates />
                 </field>
             </fields>
-            <methods/>
+            <methods />
             <presentation>
                 <details>
                     <items>
@@ -147,6 +154,25 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="org_id">
+                            <rank>30</rank>
+                        </item>
+                        <item id="country">
+                            <rank>40</rank>
+                        </item>
+                        <item id="address">
+                            <rank>50</rank>
+                        </item>
+                        <item id="contact">
+                            <rank>60</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTGateway ***************** -->
@@ -158,26 +184,35 @@
                 <key_type>autoincrement</key_type>
                 <db_table>iotgateway</db_table>
                 <db_key_field>id</db_key_field>
-                <db_final_class_field/>
-                <icon>images/plc.png</icon>
+                <db_final_class_field />
                 <naming>
                     <attributes>
-                        <attribute id="name"/>
+                        <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="plctype_name" />
+                    </complementary_attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/plc.svg</icon>
+                </style>
+                <icon>images/plc.png</icon>
                 <reconciliation>
                     <attributes>
-                        <attribute id="name"/>
-                        <attribute id="device_id"/>
-                        <attribute id="org_id"/>
-                        <attribute id="organization_name"/>
+                        <attribute id="name" />
+                        <attribute id="device_id" />
+                        <attribute id="org_id" />
+                        <attribute id="organization_name" />
                     </attributes>
                 </reconciliation>
                 <uniqueness_rules>
                     <rule id="device_id">
                         <attributes>
-                            <attribute id="org_id"/>
-                            <attribute id="device_id"/>
+                            <attribute id="org_id" />
+                            <attribute id="device_id" />
                         </attributes>
                         <filter><![CDATA[device_id != '']]></filter>
                         <disabled>false</disabled>
@@ -189,7 +224,7 @@
                 <field id="device_id" xsi:type="AttributeString">
                     <sql>device_id</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                     <!-- <validation_pattern>^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$</validation_pattern> -->
                 </field>
                 <field id="cert_created" xsi:type="AttributeEnum">
@@ -209,7 +244,7 @@
                 <field id="cert_expire_date" xsi:type="AttributeDate">
                     <sql>cert_expire_date</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="simcard_id" xsi:type="AttributeExternalKey">
                     <sql>simcard_id</sql>
@@ -234,7 +269,7 @@
                 <field id="apn" xsi:type="AttributeString">
                     <sql>apn</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="programversion_id" xsi:type="AttributeExternalKey">
                     <sql>programversion_id</sql>
@@ -319,7 +354,7 @@
                     <display_max_height>256</display_max_height>
                     <storage_max_width>8000</storage_max_width>
                     <storage_max_height>8000</storage_max_height>
-                    <default_image/>
+                    <default_image />
                     <is_null_allowed>true</is_null_allowed>
                 </field>
                 <field id="iotcables_list" xsi:type="AttributeLinkedSet">
@@ -337,7 +372,7 @@
                     <edit_mode>actions</edit_mode>
                 </field>
             </fields>
-            <methods/>
+            <methods />
             <relations>
                 <relation id="impacts">
                     <neighbours>
@@ -528,6 +563,19 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="plctype_id">
+                            <rank>20</rank>
+                        </item>
+                        <item id="device_id">
+                            <rank>30</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTSimCard ***************** -->
@@ -539,32 +587,41 @@
                 <key_type>autoincrement</key_type>
                 <db_table>iotsimcard</db_table>
                 <db_key_field>id</db_key_field>
-                <db_final_class_field/>
-                <icon>images/sim.png</icon>
+                <db_final_class_field />
                 <naming>
                     <attributes>
-                        <attribute id="sim"/>
+                        <attribute id="sim" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="phone_number" />
+                    </complementary_attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/sim_256.png</icon>
+                </style>
+                <icon>images/sim.png</icon>
                 <reconciliation>
                     <attributes>
-                        <attribute id="sim"/>
-                        <attribute id="org_id"/>
-                        <attribute id="organization_name"/>
+                        <attribute id="sim" />
+                        <attribute id="org_id" />
+                        <attribute id="organization_name" />
                     </attributes>
                 </reconciliation>
                 <order>
                     <columns>
-                        <column id="sim" ascending="true"/>
+                        <column id="sim" ascending="true" />
                     </columns>
                 </order>
                 <uniqueness_rules>
                     <rule id="sim" _delta="define">
                         <attributes>
-                            <attribute id="org_id"/>
-                            <attribute id="sim"/>
+                            <attribute id="org_id" />
+                            <attribute id="sim" />
                         </attributes>
-                        <filter/>
+                        <filter />
                         <disabled>false</disabled>
                         <is_blocking>true</is_blocking>
                     </rule>
@@ -586,42 +643,42 @@
                 <field id="phone_number" xsi:type="AttributePhoneNumber">
                     <sql>phone_number</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="pin" xsi:type="AttributeString">
                     <sql>pin</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="puk" xsi:type="AttributeString">
                     <sql>puk</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="contract_start_date" xsi:type="AttributeDate">
                     <sql>contract_start_date</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="contract_end_date" xsi:type="AttributeDate">
                     <sql>contract_end_date</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="termination_till_date" xsi:type="AttributeDate">
                     <sql>termination_till_date</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="extended_till_date" xsi:type="AttributeDate">
                     <sql>extended_till_date</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
                 <field id="notice_by_date" xsi:type="AttributeDate">
                     <sql>notice_by_date</sql>
                     <is_null_allowed>true</is_null_allowed>
-                    <default_value/>
+                    <default_value />
                 </field>
             </fields>
             <methods>
@@ -835,6 +892,16 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="sim">
+                            <rank>3</rank>
+                        </item>
+                        <item id="phone_number">
+                            <rank>4</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTSensor ***************** -->
@@ -851,7 +918,17 @@
                     <attributes>
                         <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="brand_name" />
+                        <attribute id="model_name" />
+                    </complementary_attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/din1.svg</icon>
+                </style>
                 <icon>images/din1.png</icon>
                 <reconciliation>
                     <attributes>
@@ -883,7 +960,7 @@
                     <target_attcode>name</target_attcode>
                 </field>
             </fields>
-            <methods/>
+            <methods />
             <presentation>
                 <details>
                     <items>
@@ -1006,6 +1083,22 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="brand_id">
+                            <rank>60</rank>
+                        </item>
+                        <item id="model_id">
+                            <rank>70</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                        <item id="collection">
+                            <rank>90</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** IOTCable ***************** -->
@@ -1022,7 +1115,16 @@
                     <attributes>
                         <attribute id="name" />
                     </attributes>
+                    <complementary_attributes>
+                        <attribute id="serialnumber" />
+                    </complementary_attributes>
                 </naming>
+                <fields_semantic>
+                    <state_attribute>status</state_attribute>
+                </fields_semantic>
+                <style>
+                    <icon>images/patchcable.png</icon>
+                </style>
                 <icon>images/patchcable.png</icon>
                 <reconciliation>
                     <attributes>
@@ -1045,7 +1147,7 @@
                     <target_attcode>name</target_attcode>
                 </field>
             </fields>
-            <methods/>
+            <methods />
             <presentation>
                 <details>
                     <items>
@@ -1098,6 +1200,16 @@
                         </item>
                     </items>
                 </list>
+                <summary>
+                    <items>
+                        <item id="name">
+                            <rank>10</rank>
+                        </item>
+                        <item id="serialnumber">
+                            <rank>80</rank>
+                        </item>
+                    </items>
+                </summary>
             </presentation>
         </class>
         <!-- ***************** Typology ***************** -->
@@ -1440,7 +1552,7 @@
             <enable_admin_only _delta="define">0</enable_admin_only>
             <enable_action _delta="define">UR_ACTION_MODIFY</enable_action>
             <style>
-                <decoration_classes>fas fa-sensor-cloud</decoration_classes>
+                <decoration_classes>fas fa-microchip</decoration_classes>
             </style>
         </menu>
         <menu id="IOTSpace" xsi:type="DashboardMenuNode" _delta="define">
@@ -1448,7 +1560,7 @@
             <parent>IOTManagement</parent>
             <definition>
                 <layout>DashboardLayoutOneCol</layout>
-                <title/>
+                <title />
                 <cells>
                     <cell id="iot-100">
                         <rank>1</rank>
@@ -1512,7 +1624,7 @@
         <menu id="IOTShortCut" xsi:type="TemplateMenuNode" _delta="define">
             <rank>40</rank>
             <parent>IOTManagement</parent>
-            <template_file/>
+            <template_file />
         </menu>
         <menu id="IOTCustomer" xsi:type="OQLMenuNode" _delta="define">
             <rank>10</rank>
@@ -1580,40 +1692,40 @@
         <groups>
             <group id="IOT" _delta="define">
                 <classes>
-                    <class id="IOTCustomer"/>
-                    <class id="IOTGateway"/>
-                    <class id="IOTSensor"/>
-                    <class id="IOTSimCard"/>
-                    <class id="IOTCable"/>
+                    <class id="IOTCustomer" />
+                    <class id="IOTGateway" />
+                    <class id="IOTSensor" />
+                    <class id="IOTSimCard" />
+                    <class id="IOTCable" />
                 </classes>
             </group>
             <group id="IOTTypology" _delta="define">
                 <classes>
-                    <class id="IOTProgramVersion"/>
-                    <class id="IOTFirmwareVersion"/>
-                    <class id="IOTApplication"/>
-                    <class id="IOTPlcType"/>
+                    <class id="IOTProgramVersion" />
+                    <class id="IOTFirmwareVersion" />
+                    <class id="IOTApplication" />
+                    <class id="IOTPlcType" />
                 </classes>
             </group>
             <group id="IOTLocation" _delta="define">
                 <classes>
-                    <class id="Location"/>
+                    <class id="Location" />
                 </classes>
             </group>
             <group id="IOTContact" _delta="define">
                 <classes>
-                    <class id="Contact"/>
+                    <class id="Contact" />
                 </classes>
             </group>
             <group id="IOTContactLinks" _delta="define">
                 <classes>
-                    <class id="lnkContactToFunctionalCI"/>
+                    <class id="lnkContactToFunctionalCI" />
                 </classes>
             </group>
             <group id="IOTDocumentAndLinks" _delta="define">
                 <classes>
-                    <class id="Document"/>
-                    <class id="lnkDocumentToFunctionalCI"/>
+                    <class id="Document" />
+                    <class id="lnkDocumentToFunctionalCI" />
                 </classes>
             </group>
         </groups>

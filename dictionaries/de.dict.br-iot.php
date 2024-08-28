@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @copyright   Copyright (C) 2021 Björn Rudner
+ * @copyright   Copyright (C) 2021-2024 Björn Rudner
  * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
- * @version     2022-07-14
+ * @version     2024-08-28
  *
  * Localized data
  */
@@ -21,6 +21,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTCustomer' => 'IoT Kunde',
     'Class:IOTCustomer+' => '',
+    'Class:IOTCustomer/ComplementaryName' => '%1$s (%2$s)',
     'Class:IOTCustomer/Attribute:name' => 'Name',
     'Class:IOTCustomer/Attribute:name+' => '',
     'Class:IOTCustomer/Attribute:org_id' => 'Organisation',
@@ -43,6 +44,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway' => 'IoT Gateway',
     'Class:IOTGateway+' => '',
+    'Class:IOTGateway/ComplementaryName' => '%1$s',
     'Class:IOTGateway/Attribute:device_id' => 'Device ID',
     'Class:IOTGateway/Attribute:device_id+' => 'Muss eine gültige GUID sein',
     'Class:IOTGateway/Attribute:cert_created' => 'Zertifikat erstellt',
@@ -96,6 +98,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTSensor' => 'IoT Sensor',
     'Class:IOTSensor+' => '',
+    'Class:IOTSensor/ComplementaryName' => '%1$s - %2$s',
     'Class:IOTSensor/Attribute:iotgateway_list' => 'Gateway',
     'Class:IOTSensor/Attribute:iotgateway_list+' => '',
     'Class:IOTSensor/Attribute:collection' => 'Collection',
@@ -112,6 +115,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTCable' => 'IoT Kabel',
     'Class:IOTCable+' => '',
+    'Class:IOTCable/ComplementaryName' => '%1$s',
     'Class:IOTCable/Attribute:iotgateway_id' => 'Gateway',
     'Class:IOTCable/Attribute:iotgateway_id+' => '',
 ));
@@ -169,6 +173,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTSimCard' => 'SIM Karte',
+    'Class:IOTSimCard/ComplementaryName' => '%1$s',
     'Class:IOTSimCard/Attribute:sim' => 'SIM Nummer',
     'Class:IOTSimCard/Attribute:iotgateways_list' => 'IoT Gateways',
     'Class:IOTSimCard/Attribute:phone_number' => 'Mobilnummer',
