@@ -7,7 +7,7 @@
  *
  * Localized data
  */
-
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:Model/Attribute:type/Value:IOTGateway' => 'IoT Gateway',
     'Class:Model/Attribute:type/Value:IOTGateway+' => '',
@@ -18,6 +18,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTCustomer
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTCustomer' => 'IoT Customer',
     'Class:IOTCustomer+' => '',
@@ -41,6 +42,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTGateway
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTGateway' => 'IoT Gateway',
     'Class:IOTGateway+' => '',
@@ -95,6 +97,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTSensor
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTSensor' => 'IoT Sensor',
     'Class:IOTSensor+' => '',
@@ -112,6 +115,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTCable
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTCable' => 'IoT Cable',
     'Class:IOTCable+' => '',
@@ -123,6 +127,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTProgramVersion
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTProgramVersion' => 'IoT Program Version',
     'Class:IOTProgramVersion+' => '',
@@ -135,6 +140,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTFirmwareVersion
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTFirmwareVersion' => 'IoT Firmware Version',
     'Class:IOTFirmwareVersion+' => '',
@@ -147,6 +153,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTApplication
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTApplication' => 'IoT Application',
     'Class:IOTApplication+' => '',
@@ -159,6 +166,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTPlcType
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTPlcType' => 'IoT PLC Type',
     'Class:IOTPlcType+' => '',
@@ -171,6 +179,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: IOTSimCard
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Class:IOTSimCard' => 'SIM Card',
     'Class:IOTSimCard+' => 'SIM Card to link to a Mobile Phone or Tablet',
@@ -202,6 +211,7 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Application Menu
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('EN US', 'English', 'English', array(
     'Menu:IOTManagement' => 'IoT Management',
     'Menu:IOTSpace' => 'IoT Space',
