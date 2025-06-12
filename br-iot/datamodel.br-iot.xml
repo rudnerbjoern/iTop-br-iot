@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.7">
+<itop_design version="3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/rudnerbjoern/iTop-schema/refs/heads/main/3.2/itop_design.xsd">
     <!--
     * @copyright   Copyright (C) 2022-2024 Björn Rudner
     * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -27,7 +27,6 @@
                 <style>
                     <icon>images/contact.png</icon>
                 </style>
-                <icon>images/contact.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -73,7 +72,6 @@
                     <edit_mode>actions</edit_mode>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
-                    <duplicates />
                 </field>
             </fields>
             <methods />
@@ -199,7 +197,6 @@
                 <style>
                     <icon>images/plc.svg</icon>
                 </style>
-                <icon>images/plc.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -602,7 +599,6 @@
                 <style>
                     <icon>images/sim_256.png</icon>
                 </style>
-                <icon>images/sim.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="sim" />
@@ -929,7 +925,6 @@
                 <style>
                     <icon>images/din1.svg</icon>
                 </style>
-                <icon>images/din1.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -1125,7 +1120,6 @@
                 <style>
                     <icon>images/patchcable.png</icon>
                 </style>
-                <icon>images/patchcable.png</icon>
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -1227,7 +1221,6 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
-                <display_template />
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -1256,7 +1249,6 @@
                     <edit_mode>add_only</edit_mode>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
-                    <duplicates />
                 </field>
             </fields>
             <methods />
@@ -1307,7 +1299,6 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
-                <display_template />
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -1336,7 +1327,6 @@
                     <edit_mode>add_only</edit_mode>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
-                    <duplicates />
                 </field>
             </fields>
             <methods />
@@ -1387,7 +1377,6 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
-                <display_template />
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -1416,7 +1405,6 @@
                     <edit_mode>add_only</edit_mode>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
-                    <duplicates />
                 </field>
             </fields>
             <methods />
@@ -1467,7 +1455,6 @@
                         <attribute id="name" />
                     </attributes>
                 </naming>
-                <display_template />
                 <reconciliation>
                     <attributes>
                         <attribute id="name" />
@@ -1496,7 +1483,6 @@
                     <edit_mode>add_only</edit_mode>
                     <count_min>0</count_min>
                     <count_max>0</count_max>
-                    <duplicates />
                 </field>
             </fields>
             <methods />
@@ -1537,8 +1523,12 @@
             <fields>
                 <field id="type" xsi:type="AttributeEnum" _delta="must_exist">
                     <values>
-                        <value id="IOTGateway" _delta="define">IOTGateway</value>
-                        <value id="IOTSensor" _delta="define">IOTSensor</value>
+                        <value id="IOTGateway" _delta="define">
+                            <code>IOTGateway</code>
+                        </value>
+                        <value id="IOTSensor" _delta="define">
+                            <code>IOTSensor</code>
+                        </value>
                     </values>
                 </field>
             </fields>
@@ -1548,9 +1538,9 @@
     <menus>
         <menu id="IOTManagement" xsi:type="MenuGroup" _delta="define">
             <rank>29</rank>
-            <enable_class _delta="define">IOTGateway</enable_class>
-            <enable_admin_only _delta="define">0</enable_admin_only>
-            <enable_action _delta="define">UR_ACTION_MODIFY</enable_action>
+            <enable_class>IOTGateway</enable_class>
+            <enable_admin_only>0</enable_admin_only>
+            <enable_action>UR_ACTION_MODIFY</enable_action>
             <style>
                 <decoration_classes>fas fa-microchip</decoration_classes>
             </style>

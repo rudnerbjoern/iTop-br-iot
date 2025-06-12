@@ -1,13 +1,14 @@
 <?php
 
 /**
- * @copyright   Copyright (C) 2021-2024 Björn Rudner
+ * @copyright   Copyright (C) 2021-2025 Björn Rudner
  * @license     https://www.gnu.org/licenses/gpl-3.0.en.html
- * @version     2024-09-05
+ * @version     2025-06-12
  *
  * Localized data
  */
 
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:Model/Attribute:type/Value:IOTGateway' => 'IoT Gateway',
     'Class:Model/Attribute:type/Value:IOTGateway+' => '',
@@ -18,6 +19,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTCustomer
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTCustomer' => 'IoT Kunde',
     'Class:IOTCustomer+' => '',
@@ -41,6 +43,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTGateway
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTGateway' => 'IoT Gateway',
     'Class:IOTGateway+' => '',
@@ -95,6 +98,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTSensor
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTSensor' => 'IoT Sensor',
     'Class:IOTSensor+' => '',
@@ -112,6 +116,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTCable
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTCable' => 'IoT Kabel',
     'Class:IOTCable+' => '',
@@ -123,6 +128,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTProgramVersion
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTProgramVersion' => 'IoT Programm Version',
     'Class:IOTProgramVersion+' => '',
@@ -135,6 +141,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTFirmwareVersion
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTFirmwareVersion' => 'IoT Firmware Version',
     'Class:IOTFirmwareVersion+' => '',
@@ -147,6 +154,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTApplication
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTApplication' => 'IoT Applikation',
     'Class:IOTApplication+' => '',
@@ -159,6 +167,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTPlcType
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTPlcType' => 'IoT PLC Typ',
     'Class:IOTPlcType+' => '',
@@ -171,6 +180,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Class: IOTSimCard
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Class:IOTSimCard' => 'SIM Karte',
     'Class:IOTSimCard/ComplementaryName' => '%1$s',
@@ -192,6 +202,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 //
 // Application Menu
 //
+/** @disregard P1009 Undefined type Dict */
 Dict::Add('DE DE', 'German', 'Deutsch', array(
     'Menu:IOTManagement' => 'IoT Verwaltung',
     'Menu:IOTSpace' => 'IoT Bereich',
