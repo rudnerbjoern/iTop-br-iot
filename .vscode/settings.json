@@ -5,6 +5,7 @@
         "baseinfo",
         "bizmodel",
         "cmdb",
+        "Combodo",
         "configmgmt",
         "dashlet",
         "dashlets",
@@ -36,5 +37,8 @@
         "Shotcuts",
         "simcard",
         "vpnd"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "editor.formatOnPaste": true
 }
