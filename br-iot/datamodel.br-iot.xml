@@ -1722,7 +1722,7 @@
             <profile id="117" _delta="if_exists">
                 <!-- SuperUser -->
                 <groups>
-                    <group id="IOT">
+                    <group id="IOT" _delta="define">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1732,7 +1732,7 @@
                             <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
-                    <group id="IOTTypology">
+                    <group id="IOTTypology" _delta="define">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1742,7 +1742,7 @@
                             <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
-                    <group id="IOTLocation">
+                    <group id="IOTLocation" _delta="define">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1752,7 +1752,7 @@
                             <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
-                    <group id="IOTContact">
+                    <group id="IOTContact" _delta="define">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1762,7 +1762,7 @@
                             <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
-                    <group id="IOTContactLinks">
+                    <group id="IOTContactLinks" _delta="define">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
@@ -1772,7 +1772,7 @@
                             <action id="action:bulk delete">allow</action>
                         </actions>
                     </group>
-                    <group id="IOTDocumentAndLinks">
+                    <group id="IOTDocumentAndLinks" _delta="define">
                         <actions>
                             <action id="action:read">allow</action>
                             <action id="action:bulk read">allow</action>
