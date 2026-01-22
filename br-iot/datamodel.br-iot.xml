@@ -677,51 +677,51 @@
                 </field>
             </fields>
             <event_listeners>
-                <event_listener id="EvtSetInitialIOTSimCardAttributeFlags">
+                <event_listener id="OnIOTSimCardSetInitialAttributesFlags">
                     <event>EVENT_DB_SET_INITIAL_ATTRIBUTES_FLAGS</event>
                     <rank>10</rank>
-                    <callback>EvtSetInitialIOTSimCardAttributeFlags</callback>
+                    <callback>OnIOTSimCardSetInitialAttributesFlags</callback>
                 </event_listener>
-                <event_listener id="EvtSetIOTSimCardAttributeFlags">
+                <event_listener id="OnIOTSimCardSetAttributesFlags">
                     <event>EVENT_DB_SET_ATTRIBUTES_FLAGS</event>
                     <rank>10</rank>
-                    <callback>EvtSetIOTSimCardAttributeFlags</callback>
+                    <callback>OnIOTSimCardSetAttributesFlags</callback>
                 </event_listener>
-                <event_listener id="EvtBeforeIOTSimCardWrite">
+                <event_listener id="OnIOTSimCardBeforeWrite">
                     <event>EVENT_DB_BEFORE_WRITE</event>
                     <rank>10</rank>
-                    <callback>EvtBeforeIOTSimCardWrite</callback>
+                    <callback>OnIOTSimCardBeforeWrite</callback>
                 </event_listener>
             </event_listeners>
             <methods>
-                <method id="EvtSetInitialIOTSimCardAttributeFlags">
+                <method id="OnIOTSimCardSetInitialAttributesFlags">
                     <static>false</static>
                     <access>public</access>
                     <type>EventListener</type>
                     <code><![CDATA[
-    public function EvtSetInitialIOTSimCardAttributeFlags(Combodo\iTop\Service\Events\EventData $oEventData)
+    public function OnIOTSimCardSetInitialAttributesFlags(Combodo\iTop\Service\Events\EventData $oEventData)
     {
         $this->ForceInitialAttributeFlags('name', OPT_ATT_HIDDEN);
     }
   ]]></code>
                 </method>
-                <method id="EvtSetIOTSimCardAttributeFlags">
+                <method id="OnIOTSimCardSetAttributesFlags">
                     <static>false</static>
                     <access>public</access>
                     <type>EventListener</type>
                     <code><![CDATA[
-    public function EvtSetIOTSimCardAttributeFlags(Combodo\iTop\Service\Events\EventData $oEventData)
+    public function OnIOTSimCardSetAttributesFlags(Combodo\iTop\Service\Events\EventData $oEventData)
     {
         $this->ForceAttributeFlags('name', OPT_ATT_READONLY);
     }
   ]]></code>
                 </method>
-                <method id="EvtBeforeIOTSimCardWrite">
+                <method id="OnIOTSimCardBeforeWrite">
                     <static>false</static>
                     <access>public</access>
                     <type>EventListener</type>
                     <code><![CDATA[
-    public function EvtBeforeIOTSimCardWrite(Combodo\iTop\Service\Events\EventData $oEventData)
+    public function OnIOTSimCardBeforeWrite(Combodo\iTop\Service\Events\EventData $oEventData)
     {
         $this->SetName();
     }
