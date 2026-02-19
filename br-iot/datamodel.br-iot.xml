@@ -701,7 +701,7 @@
                     <code><![CDATA[
     public function OnIOTSimCardSetInitialAttributesFlags(Combodo\iTop\Service\Events\EventData $oEventData)
     {
-        $this->ForceInitialAttributeFlags('name', OPT_ATT_HIDDEN);
+        $this->AddInitialAttributeFlags('name', OPT_ATT_HIDDEN);
     }
   ]]></code>
                 </method>
@@ -712,7 +712,7 @@
                     <code><![CDATA[
     public function OnIOTSimCardSetAttributesFlags(Combodo\iTop\Service\Events\EventData $oEventData)
     {
-        $this->ForceAttributeFlags('name', OPT_ATT_READONLY);
+        $this->AddAttributeFlags('name', OPT_ATT_READONLY);
     }
   ]]></code>
                 </method>
